@@ -1,4 +1,4 @@
-import 'package:bon_app_mobile/screens/forYouPage.dart';
+import 'package:bon_app_mobile/screens/foodCourt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ class StartScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ForYouScreen(),
+      home: FoodCourtScreen(),
     );
   }
 }
