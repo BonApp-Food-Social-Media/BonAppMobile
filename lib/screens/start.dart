@@ -1,4 +1,4 @@
-import 'package:bon_app_mobile/screens/homePage.dart';
+import 'package:bon_app_mobile/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
@@ -7,7 +7,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomePageScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:bon_app_mobile/models/FoodModel.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../widgets/MealMainPage.dart';
+import '../../widgets/MealMainPage.dart';
 
 class FoodCourtScreen extends StatefulWidget {
   const FoodCourtScreen({super.key, required this.foods, required this.isFoodCourt, required this.onDismissed});

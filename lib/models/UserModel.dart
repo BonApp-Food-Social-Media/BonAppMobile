@@ -7,7 +7,10 @@ class User{
     required this.email,
     required this.password,
     required this.likedMeals,
-    required this.profilePicURL
+    required this.profilePicURL,
+    required this.following,
+    required this.followers,
+    required this.mealsMade
 });
 
   final int id;
@@ -16,4 +19,7 @@ class User{
   final String password;
   final List<FoodModel> likedMeals;
   final String profilePicURL;
+  final List<User> following;
+  final List<User> followers;
+  final List<FoodModel> mealsMade;
 }

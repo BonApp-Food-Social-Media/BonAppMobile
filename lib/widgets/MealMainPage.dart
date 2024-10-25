@@ -15,6 +15,9 @@ class MealMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Container(
       color: Colors.white,
       child: Dismissible(
@@ -36,41 +39,44 @@ class MealMainPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: FadeInImage(
-                        placeholder: const NetworkImage(
-                            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
-                        image: NetworkImage(foodModel.user.profilePicURL),
-                        fit: BoxFit.cover,
-                        width: 50,
-                        height: 50,
+            SizedBox(
+              width: screenWidth * 0.8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: FadeInImage(
+                          placeholder: const NetworkImage(
+                              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
+                          image: NetworkImage(foodModel.user.profilePicURL),
+                          fit: BoxFit.cover,
+                          width: 50,
+                          height: 50,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      foodModel.user.username,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                if(isFoodCourt)
-                  ElevatedButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Subscribe",
-                        style: TextStyle(fontSize: 15),
-                      ))
-              ],
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        foodModel.user.username,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  if(isFoodCourt)
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Subscribe",
+                          style: TextStyle(fontSize: 15),
+                        ))
+                ],
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -84,8 +90,8 @@ class MealMainPage extends StatelessWidget {
                   foodModel.imageURL,
                 ),
                 fit: BoxFit.cover,
-                width: 350,
-                height: 450,
+                width: screenWidth * 0.8,
+                height: screenHeight * 0.5,
               ),
             ),
             const SizedBox(
