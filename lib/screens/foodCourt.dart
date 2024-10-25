@@ -1,12 +1,14 @@
-import 'package:bon_app_mobile/data/data.dart';
-import 'package:bon_app_mobile/widgets/MealMainPage.dart';
+import 'package:bon_app_mobile/models/FoodModel.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
-import '../models/FoodModel.dart';
+import '../widgets/MealMainPage.dart';
 
 class FoodCourtScreen extends StatefulWidget {
-  const FoodCourtScreen({super.key});
+  const FoodCourtScreen({super.key, required this.foods, required this.isFoodCourt, required this.onDismissed});
+
+  final List<FoodModel> foods;
+  final bool isFoodCourt;
+  final void Function(DismissDirection, FoodModel) onDismissed;  // Passe den Typ an
 
   @override
   State<StatefulWidget> createState() {
@@ -15,83 +17,33 @@ class FoodCourtScreen extends StatefulWidget {
 }
 
 class _FoodCourtScreenState extends State<FoodCourtScreen> {
-  List<FoodModel> _foods = [];
-  final List<FoodModel> _swipedFoodsRight = [];
-
-  var _isFoodCourt = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _foods = List.from(foodsData);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  _isFoodCourt = false;
-                });
-              },
-              child: Text("Following", style: TextStyle(color: _isFoodCourt ? Colors.black : Colors.blue, fontSize: 20),),
-            ),
-            const SizedBox(width: 20),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  _isFoodCourt = true;
-                });
-              },
-              child: Text("Food Court", style: TextStyle(color: _isFoodCourt ? Colors.blue : Colors.black, fontSize: 20),),
-            ),
-          ],
-        ),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Stack(
-          children: [
-            if (_foods.isEmpty)
-              Center(
-                child: Container(
-                    padding: const EdgeInsets.all(20),
-                    child: const Center(
-                      child: Text(
-                        "You reached the end 😲. There are no new meal ideas. \n Try again later and don't tell anyone about the easter egg",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    )),
+    return Center(
+      child: Stack(
+        children: [
+          if (widget.foods.isEmpty)
+            Center(
+              child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: const Center(
+                    child: Text(
+                      "You reached the end 😲. There are strangely no new meal ideas. \n Try again later and don't tell anyone about the easter egg",
+                      style: TextStyle(fontSize: 30),
+                    ),
+                  )),
+            )
+          else
+            for (var i = 0; i < widget.foods.length; i++)
+              MealMainPage(
+                foodModel: widget.foods[i],
+                onDismissed: (direction) {
+                  widget.onDismissed(direction, widget.foods[i]);
+                },
+                isFoodCourt: widget.isFoodCourt,
               )
-            else
-              for (var i = 0; i < _foods.length; i++)
-                MealMainPage(
-                  foodModel: _foods[i],
-                  onDismissed: (direction) {
-                    setState(() {
-                      if (direction == DismissDirection.startToEnd) {
-                        _swipedFoodsRight.add(_foods[i]);
-                      }
-                      _foods.removeAt(i);
-                    });
-                  },
-                )
-          ],
-        ),
+        ],
       ),
-      bottomNavigationBar:
-          BottomNavigationBar(backgroundColor: Colors.white, items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home Page"),
-        BottomNavigationBarItem(icon: Icon(Icons.add), label: "New Post"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle), label: "Account"),
-      ]),
     );
   }
 }

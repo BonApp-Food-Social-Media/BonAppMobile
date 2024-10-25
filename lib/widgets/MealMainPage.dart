@@ -1,5 +1,4 @@
 import 'package:bon_app_mobile/models/FoodModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MealMainPage extends StatelessWidget {
@@ -7,10 +6,12 @@ class MealMainPage extends StatelessWidget {
     super.key,
     required this.foodModel,
     required this.onDismissed,
+    required this.isFoodCourt,
   });
 
   final FoodModel foodModel;
   final Function(DismissDirection) onDismissed;
+  final bool isFoodCourt;
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +25,13 @@ class MealMainPage extends StatelessWidget {
           color: Colors.white,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 20),
-          child: const Icon(Icons.check, color: Colors.black),
+          child: const Icon(Icons.check, color: Colors.black, size: 50,),
         ),
         secondaryBackground: Container(
           color: Colors.white,
           alignment: Alignment.centerRight,
           padding: const EdgeInsets.only(right: 20),
-          child: const Icon(Icons.delete, color: Colors.black),
+          child: const Icon(Icons.delete, color: Colors.black, size: 50,),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -52,11 +53,23 @@ class MealMainPage extends StatelessWidget {
                         height: 50,
                       ),
                     ),
-                    const SizedBox(width: 10,),
-                    Text(foodModel.user.username, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      foodModel.user.username,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
-                ElevatedButton(onPressed: () {}, child: const Text("Subscribe", style: TextStyle(fontSize: 15),))
+                if(isFoodCourt)
+                  ElevatedButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Subscribe",
+                        style: TextStyle(fontSize: 15),
+                      ))
               ],
             ),
             const SizedBox(
@@ -80,9 +93,7 @@ class MealMainPage extends StatelessWidget {
             ),
             Text(
               foodModel.name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold
-              ),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
             ),
             const SizedBox(
               height: 20,
@@ -90,19 +101,31 @@ class MealMainPage extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.favorite_border, size: 30,),
+                Icon(
+                  Icons.favorite_border,
+                  size: 30,
+                ),
                 SizedBox(
                   width: 50,
                 ),
-                Icon(Icons.comment, size: 30,),
+                Icon(
+                  Icons.comment,
+                  size: 30,
+                ),
                 SizedBox(
                   width: 50,
                 ),
-                Icon(Icons.outlined_flag, size: 30,),
+                Icon(
+                  Icons.outlined_flag,
+                  size: 30,
+                ),
                 SizedBox(
                   width: 50,
                 ),
-                Icon(Icons.star_border, size: 30,),
+                Icon(
+                  Icons.star_border,
+                  size: 30,
+                ),
               ],
             )
           ],

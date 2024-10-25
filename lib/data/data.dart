@@ -1,7 +1,7 @@
 import 'package:bon_app_mobile/models/FoodModel.dart';
 import 'package:bon_app_mobile/models/UserModel.dart';
 
-const List<FoodModel> foodsData = [
+const List<FoodModel> foodsFoodCourtData = [
   FoodModel(
       id: 1,
       name: "Lasagne",
@@ -81,4 +81,86 @@ const List<FoodModel> foodsData = [
           likedMeals: [],
           profilePicURL:
               "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
+];
+
+const List<FoodModel> foodsFollowingData = [
+  FoodModel(
+      id: 1,
+      name: "Schnitzel",
+      imageURL:
+      "https://mehr-genuss.de/wp-content/uploads/Schnitzel-zubereiten-knusprig-saftig-Rezept.jpg",
+      minutes: 800,
+      ingredients: ["first", "Second"],
+      steps: ["third", "fourth"],
+      user: User(
+          id: 1,
+          username: "helloWorld",
+          email: "hello@world.com",
+          password: "123456",
+          likedMeals: [],
+          profilePicURL:
+          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
+  FoodModel(
+      id: 1,
+      name: "Kalbsbratwurst",
+      imageURL:
+      "https://www.metzgerei.de/media/d5/24/9c/1627975773/299_Kalbsbratwurst_gebraten.jpg",
+      minutes: 800,
+      ingredients: ["first", "Second"],
+      steps: ["third", "fourth"],
+      user: User(
+          id: 1,
+          username: "helloWorld",
+          email: "hello@world.com",
+          password: "123456",
+          likedMeals: [],
+          profilePicURL:
+          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
+  FoodModel(
+      id: 1,
+      name: "Entrecôt de boeuf",
+      imageURL: "https://lacavebeefclub.fr/wp-content/uploads/2017/01/boeuf-viande-tendre-filet-boeuf-e1534239243521.jpg",
+      minutes: 800,
+      ingredients: ["first", "Second"],
+      steps: ["third", "fourth"],
+      user: User(
+          id: 1,
+          username: "helloWorld",
+          email: "hello@world.com",
+          password: "123456",
+          likedMeals: [],
+          profilePicURL:
+          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
+  FoodModel(
+      id: 1,
+      name: "Sushi",
+      imageURL:
+      "https://www.kikkoman.ch/fileadmin/_processed_/4/2/csm_sushi-kakkoii_2c56fe3133.webp",
+      minutes: 800,
+      ingredients: ["first", "Second"],
+      steps: ["third", "fourth"],
+      user: User(
+          id: 1,
+          username: "helloWorld",
+          email: "hello@world.com",
+          password: "123456",
+          likedMeals: [],
+          profilePicURL:
+          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
+  FoodModel(
+      id: 1,
+      name: "Pulled Pork Burger",
+      imageURL:
+      "https://m.bettybossi.ch/static/rezepte/x/bb_bbzh210915_0005a_x.jpg",
+      minutes: 800,
+      ingredients: ["first", "Second"],
+      steps: ["third", "fourth"],
+      user: User(
+          id: 1,
+          username: "helloWorld",
+          email: "hello@world.com",
+          password: "123456",
+          likedMeals: [],
+          profilePicURL:
+          "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg")),
 ];
