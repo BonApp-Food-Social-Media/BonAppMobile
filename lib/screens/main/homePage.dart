@@ -1,4 +1,5 @@
 import 'package:bon_app_mobile/data/foodData.dart';
+import 'package:bon_app_mobile/screens/favorites/favorites.dart';
 import 'package:bon_app_mobile/screens/main/foodCourt.dart';
 import 'package:bon_app_mobile/screens/profile/profile.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
         );
         break;
       case 2:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+        );
+        break;
+      case 3:
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const ProfileScreen(user: dummyUser,)),
@@ -108,19 +115,38 @@ class _HomePageScreenState extends State<HomePageScreen> {
         showUnselectedLabels: false,
         backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        selectedIconTheme: const IconThemeData(size: 35),
+        unselectedIconTheme: const IconThemeData(size: 35),
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, size: 35),
-            label: "",
+            icon:  Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            label: "Go to FoodCourt",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_box_outlined, size: 35),
-            label: "",
+            icon: Icon(
+              Icons.add_box_outlined,
+              color: Colors.black,
+            ),
+            label: "Create a dream Recipe",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle, size: 35),
-            label: "",
+            icon: Icon(
+              Icons.bookmark_border,
+              color: Colors.black,
+            ),
+            label: "Go to your favorite Food",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_circle_outlined,
+              color: Colors.black,
+            ),
+            label: "Go to your Account",
           ),
         ],
       ),

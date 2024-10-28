@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
           width: screenWidth * 0.8,
           height: screenHeight * 0.6,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
@@ -85,21 +85,38 @@ class LoginScreen extends StatelessWidget {
                   // _enteredPassword = value!;
                 },
               ),
-              Row(
+              Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePageScreen()));
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePageScreen()));
+                        },
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                    ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePageScreen()));
+                        },
+                        child: const Text(
+                          "Signup",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ],
                   ),
                   TextButton(
                     onPressed: () {
@@ -109,23 +126,11 @@ class LoginScreen extends StatelessWidget {
                               builder: (context) => const HomePageScreen()));
                     },
                     child: const Text(
-                      "Signup",
-                      style: TextStyle(fontSize: 20),
+                      "Forgot password? Reset password here",
+                      style: TextStyle(fontSize: 15),
                     ),
                   ),
                 ],
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomePageScreen()));
-                },
-                child: const Text(
-                  "Forgot password? Reset password here",
-                  style: TextStyle(fontSize: 15),
-                ),
               ),
             ],
           ),
