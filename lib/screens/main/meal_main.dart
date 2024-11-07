@@ -1,4 +1,4 @@
-import 'package:bon_app_mobile/models/FoodModel.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
 class MealMainPage extends StatelessWidget {
@@ -21,7 +21,7 @@ class MealMainPage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Dismissible(
-        key: UniqueKey(),
+        key: ObjectKey(foodModel),
         direction: DismissDirection.horizontal,
         onDismissed: onDismissed,
         background: Container(
@@ -127,13 +127,13 @@ class MealMainPage extends StatelessWidget {
                 SizedBox(
                   width: 50,
                 ),
-                Icon(
+                /*Icon(
                   Icons.insert_comment_outlined,
                   size: 30,
                 ),
                 SizedBox(
                   width: 50,
-                ),
+                ),*/
                 Icon(
                   Icons.outlined_flag,
                   size: 30,

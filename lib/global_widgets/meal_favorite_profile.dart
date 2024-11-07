@@ -1,4 +1,4 @@
-import 'package:bon_app_mobile/models/FoodModel.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
 class MealFavoriteAndProfile extends StatelessWidget {

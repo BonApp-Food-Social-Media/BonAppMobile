@@ -1,11 +1,8 @@
-import 'package:bon_app_mobile/screens/favorites/favorites.dart';
-import 'package:bon_app_mobile/screens/profile/profile.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/userData.dart';
-import '../main/homePage.dart';
-import '../newMeals/newMeal.dart';
+import '../../singleton/active_user_singleton.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -17,51 +14,10 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  int _selectedIndex = 2;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomePageScreen(),
-          ),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const NewMealScreen(),
-          ),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FavoritesScreen(),
-          ),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ProfileScreen(user: dummyUser),
-          ),
-        );
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    User? activeUser = ActiveUserSingleton().activeUser;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -78,7 +34,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: const Icon(Icons.logout, color: Colors.black, size: 30,),
+              icon: const Icon(
+                Icons.logout,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
           ],
         ),
@@ -86,46 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: const Center(
         child: Text("Currently implementing"),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        selectedIconTheme: const IconThemeData(size: 35),
-        unselectedIconTheme: const IconThemeData(size: 35),
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              color: Colors.black,
-            ),
-            label: "Go to FoodCourt",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
-              color: Colors.black,
-            ),
-            label: "Create a dream Recipe",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark_outline,
-              color: Colors.black,
-            ),
-            label: "Go to your favorite Food",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle_outlined,
-              color: Colors.black,
-            ),
-            label: "Go to your Account",
-          ),
-        ],
-      ),
+      bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: null), //Index 4 because it doesn't need to be in the Navigation bar
     );
   }
 }

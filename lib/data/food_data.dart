@@ -1,6 +1,6 @@
-import 'package:bon_app_mobile/models/FoodModel.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 
-const List<FoodModel> foodsFoodCourtData = [
+List<FoodModel> foodsFoodCourtData = [
   FoodModel(
     id: 1,
     name: "Lasagne",
@@ -20,7 +20,7 @@ const List<FoodModel> foodsFoodCourtData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -30,7 +30,7 @@ const List<FoodModel> foodsFoodCourtData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user2",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -41,7 +41,7 @@ const List<FoodModel> foodsFoodCourtData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user3",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -57,7 +57,7 @@ const List<FoodModel> foodsFoodCourtData = [
   ),
 ];
 
-const List<FoodModel> foodsFollowingData = [
+List<FoodModel> foodsFollowingData = [
   FoodModel(
     id: 1,
     name: "Schnitzel",
@@ -66,7 +66,7 @@ const List<FoodModel> foodsFollowingData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -77,7 +77,7 @@ const List<FoodModel> foodsFollowingData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user2",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -88,7 +88,7 @@ const List<FoodModel> foodsFollowingData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user3",
     filters: ["italian", "slow"],
   ),
   FoodModel(
@@ -110,7 +110,7 @@ const List<FoodModel> foodsFollowingData = [
     minutes: 800,
     ingredients: "first, Second",
     steps: "third, fourth",
-    username: "DummyUser",
+    username: "user",
     filters: ["italian", "slow"],
   ),
 ];

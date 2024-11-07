@@ -1,8 +1,7 @@
-import 'package:bon_app_mobile/models/FoodModel.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 
 class User{
   const User({
-    required this.id,
     required this.username,
     required this.email,
     required this.password,
@@ -12,7 +11,6 @@ class User{
     required this.followersUsername,
 });
 
-  final int id;
   final String username;
   final String email;
   final String password;

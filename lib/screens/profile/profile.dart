@@ -1,17 +1,14 @@
-import 'package:bon_app_mobile/data/foodData.dart';
-import 'package:bon_app_mobile/models/FoodModel.dart';
-import 'package:bon_app_mobile/screens/favorites/favorites.dart';
-import 'package:bon_app_mobile/screens/newMeals/newMeal.dart';
+import 'package:bon_app_mobile/data/food_data.dart';
+import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:bon_app_mobile/screens/profile/settings.dart';
 import 'package:flutter/material.dart';
-import '../../models/UserModel.dart';
-import '../../widgets/MealFavoriteAndProfile.dart';
-import '../main/homePage.dart';
+import '../../global_widgets/meal_favorite_profile.dart';
+import '../../models/user_model.dart';
+import '../../singleton/active_user_singleton.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key, required this.user});
-
-  final User user;
+  const ProfileScreen({super.key});
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -19,49 +16,17 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   List<FoodModel> _mealsMade = [];
+  User? activeUser = ActiveUserSingleton().activeUser;
 
   @override
   void initState() {
     super.initState();
     _mealsMade = foodsFoodCourtData
-        .where((meal) => meal.username == widget.user.username)
+        .where((meal) => meal.username == activeUser!.username)
         .toList();
     _mealsMade += foodsFollowingData
-        .where((meal) => meal.username == widget.user.username)
+        .where((meal) => meal.username == activeUser!.username)
         .toList();
-  }
-
-  int _selectedIndex = 3;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomePageScreen(),
-          ),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const NewMealScreen(),
-          ),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const FavoritesScreen()),
-        );
-        break;
-    }
   }
 
   @override
@@ -83,9 +48,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             IconButton(
               onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SettingsScreen()));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
               },
-              icon: const Icon(Icons.settings, color: Colors.black, size: 30,),
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
           ],
         ),
@@ -105,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: FadeInImage(
                     placeholder: const NetworkImage(
                         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
-                    image: NetworkImage(widget.user.profilePicURL),
+                    image: NetworkImage(activeUser!.profilePicURL),
                     fit: BoxFit.cover,
                     width: 75,
                     height: 75,
@@ -115,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: screenWidth * 0.1,
                 ),
                 Text(
-                  widget.user.username,
+                  activeUser!.username,
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -136,13 +110,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 Text(
-                  "${widget.user.followersUsername.length} Followers",
+                  "${activeUser!.followersUsername.length} Followers",
                   style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "${widget.user.followingUsername.length} Following",
+                  "${activeUser!.followingUsername.length} Following",
                   style: const TextStyle(
                     fontSize: 20,
                   ),
@@ -184,46 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: Colors.white,
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        selectedIconTheme: const IconThemeData(size: 35),
-        unselectedIconTheme: const IconThemeData(size: 35),
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              color: Colors.black,
-            ),
-            label: "Go to FoodCourt",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
-              color: Colors.black,
-            ),
-            label: "Create a dream Recipe",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.bookmark_border,
-              color: Colors.black,
-            ),
-            label: "Go to your favorite Food",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: Colors.black,
-            ),
-            label: "Go to your Account",
-          ),
-        ],
-      ),
+      bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: 3),
     );
   }
 }
