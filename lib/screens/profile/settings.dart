@@ -46,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: const Center(
         child: Text("Currently implementing"),
       ),
-      bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: null), //Index 4 because it doesn't need to be in the Navigation bar
+      bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: 3), //Index 4 because it doesn't need to be in the Navigation bar
     );
   }
 }

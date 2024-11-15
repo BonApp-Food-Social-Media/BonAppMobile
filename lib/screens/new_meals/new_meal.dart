@@ -21,12 +21,6 @@ class _NewMealScreenState extends State<NewMealScreen> {
   final TextEditingController _controllerReceipt = TextEditingController();
   File? _selectedImage;
 
-  /*void _pickImage(File pickedImage) {
-    setState(() {
-      _selectedImage = pickedImage;
-    });
-  }*/
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;

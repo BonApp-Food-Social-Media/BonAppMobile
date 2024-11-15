@@ -2,5 +2,7 @@ enum Filters{
   vegan,
   vegetarian,
   italian,
-  greek
+  greek,
+  fast,
+  highProtein
 }

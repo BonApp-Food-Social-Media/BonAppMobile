@@ -1,9 +1,9 @@
 import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
+import 'package:bon_app_mobile/global_widgets/custom_profile_tab_bar.dart';
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:bon_app_mobile/screens/profile/settings.dart';
 import 'package:flutter/material.dart';
-import '../../global_widgets/meal_favorite_profile.dart';
 import '../../models/user_model.dart';
 import '../../singleton/active_user_singleton.dart';
 
@@ -77,8 +77,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: FadeInImage(
-                    placeholder: const NetworkImage(
-                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
+                    placeholder: const AssetImage(
+                        "assets/images/empty_profile_pic.webp"),
                     image: NetworkImage(activeUser!.profilePicURL),
                     fit: BoxFit.cover,
                     width: 75,
@@ -126,35 +126,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               height: screenHeight * 0.1,
             ),
-            _mealsMade.isNotEmpty
-                ? SizedBox(
-                    height:
-                        MediaQuery.of(context).size.height, // Adjust as needed
-                    child: GridView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 1,
-                        crossAxisSpacing: 0,
-                        mainAxisSpacing: 0,
-                      ),
-                      itemCount: _mealsMade.length,
-                      itemBuilder: (context, index) {
-                        return MealFavoriteAndProfile(
-                            foodModel: _mealsMade[index]);
-                      },
-                    ),
-                  )
-                : const Center(
-                    child: Text(
-                      "There are no meals found.",
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
+            // Expanded(
+              ProfileTabView(),
+            // )
+
+
           ],
         ),
       ),

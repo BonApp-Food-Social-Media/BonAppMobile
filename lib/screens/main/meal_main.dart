@@ -49,30 +49,6 @@ class MealMainPage extends StatelessWidget {
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     // ClipRRect(
-                  //     //   borderRadius: BorderRadius.circular(50),
-                  //     //   child: FadeInImage(
-                  //     //     placeholder: const NetworkImage(
-                  //     //         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
-                  //     //     image: NetworkImage(foodModel.username.profilePicURL),
-                  //     //     fit: BoxFit.cover,
-                  //     //     width: 50,
-                  //     //     height: 50,
-                  //     //   ),
-                  //     // ),
-                  //     const SizedBox(
-                  //       width: 10,
-                  //     ),
-                  //     Text(
-                  //       foodModel.username,
-                  //       style: const TextStyle(
-                  //           fontSize: 20, fontWeight: FontWeight.bold),
-                  //     ),
-                  //   ],
-                  // ),
                   if(isFoodCourt)
                     ElevatedButton(
                         onPressed: () {},
@@ -89,8 +65,9 @@ class MealMainPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: FadeInImage(
-                placeholder: const NetworkImage(
-                    "https://t4.ftcdn.net/jpg/06/71/92/37/360_F_671923740_x0zOL3OIuUAnSF6sr7PuznCI5bQFKhI0.jpg"),
+                placeholder: const AssetImage(
+                  "assets/images/placeholder_or_error_image.jpg"
+                ),
                 image: NetworkImage(
                   foodModel.imageURL,
                 ),
@@ -98,8 +75,8 @@ class MealMainPage extends StatelessWidget {
                 width: screenWidth * 0.8,
                 height: screenHeight * 0.5,
                 imageErrorBuilder: (context, error, stackTrace) {
-                  return Image.network(
-                    "https://t4.ftcdn.net/jpg/06/71/92/37/360_F_671923740_x0zOL3OIuUAnSF6sr7PuznCI5bQFKhI0.jpg", // Use the same placeholder image
+                  return Image.asset(
+                    "assets/images/placeholder_or_error_image.jpg", // Use the same placeholder image
                     fit: BoxFit.cover,
                     width: screenWidth * 0.8,
                     height: screenHeight * 0.5,
@@ -127,13 +104,6 @@ class MealMainPage extends StatelessWidget {
                 SizedBox(
                   width: 50,
                 ),
-                /*Icon(
-                  Icons.insert_comment_outlined,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 50,
-                ),*/
                 Icon(
                   Icons.outlined_flag,
                   size: 30,

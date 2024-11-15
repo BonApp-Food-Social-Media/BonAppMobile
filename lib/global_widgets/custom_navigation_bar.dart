@@ -25,25 +25,19 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndexOfScreen;
-    if(_currentIndex == null){
-      isHome = false;
-      isNewMeal = false;
-      isFavorite = false;
-      isProfile = false;
-    } else {
-      switch (_currentIndex) {
-        case 0:
-          isHome = true;
-          break;
-        case 1:
-          isNewMeal = true;
-          break;
-        case 2:
-          isFavorite = true;
-        case 3:
-          isProfile = true;
-          break;
-      }
+
+    switch (_currentIndex) {
+      case 0:
+        isHome = true;
+        break;
+      case 1:
+        isNewMeal = true;
+        break;
+      case 2:
+        isFavorite = true;
+      case 3:
+        isProfile = true;
+        break;
     }
   }
 
@@ -94,9 +88,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       showSelectedLabels: false,
       showUnselectedLabels: false,
       backgroundColor: Colors.white,
-      /*if(_currentIndex != null)*/
-      //TODO IMPLEMENT THIS
-        currentIndex: _currentIndex!,
+      currentIndex: _currentIndex!,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: const IconThemeData(size: 35),
       unselectedIconTheme: const IconThemeData(size: 35),

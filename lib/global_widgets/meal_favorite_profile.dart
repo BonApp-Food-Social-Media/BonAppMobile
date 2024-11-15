@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +15,8 @@ class MealFavoriteAndProfile extends StatelessWidget {
 
     return Center(
       child: FadeInImage(
-        placeholder: const NetworkImage(
-            "https://t4.ftcdn.net/jpg/06/71/92/37/360_F_671923740_x0zOL3OIuUAnSF6sr7PuznCI5bQFKhI0.jpg"),
+        placeholder:
+            const AssetImage("assets/images/placeholder_or_error_image.jpg"),
         image: NetworkImage(
           foodModel.imageURL,
         ),
@@ -22,8 +24,8 @@ class MealFavoriteAndProfile extends StatelessWidget {
         width: screenWidth * 0.33,
         height: screenHeight * 0.2,
         imageErrorBuilder: (context, error, stackTrace) {
-          return Image.network(
-            "https://t4.ftcdn.net/jpg/06/71/92/37/360_F_671923740_x0zOL3OIuUAnSF6sr7PuznCI5bQFKhI0.jpg", // Use the same placeholder image
+          return Image.asset(
+            "assets/images/placeholder_or_error_image.jpg",
             fit: BoxFit.cover,
             width: screenWidth * 0.33,
             height: screenHeight * 0.2,
