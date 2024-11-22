@@ -1,6 +1,8 @@
 import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
 import 'package:bon_app_mobile/screens/main/widgets/food_court.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/food_model.dart';
@@ -15,21 +17,18 @@ class HomePageScreen extends StatefulWidget {
 class _HomePageScreenState extends State<HomePageScreen> {
   List<FoodModel> _foodsFoodCourt = [];
   List<FoodModel> _foodsFollowing = [];
-  final List<FoodModel> _swipedFoodsRight = [];
+  User? activeUser = ActiveUserSingleton().activeUser;
   var _isFoodCourt = true;
 
   @override
   void initState() {
     super.initState();
-    _foodsFoodCourt = List.from(foodsFoodCourtData);
-    _foodsFollowing = List.from(foodsFollowingData);
+    _foodsFoodCourt = List.from(foods);
+    _foodsFollowing = _foodsFoodCourt.where((food) => activeUser!.followingUsername.contains(food.username)).toList();
   }
 
   onDismissed(DismissDirection direction, FoodModel food) {
     setState(() {
-      if (direction == DismissDirection.startToEnd) {
-        _swipedFoodsRight.add(food);
-      }
       _isFoodCourt
           ? _foodsFoodCourt.remove(food)
           : _foodsFollowing.remove(food);

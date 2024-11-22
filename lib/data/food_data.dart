@@ -1,6 +1,6 @@
 import 'package:bon_app_mobile/models/food_model.dart';
 
-List<FoodModel> foodsFoodCourtData = [
+List<FoodModel> foods = [
   FoodModel(
     id: 1,
     name: "Lasagne",
@@ -55,9 +55,6 @@ List<FoodModel> foodsFoodCourtData = [
     username: "DummyUser",
     filters: ["italian", "slow"],
   ),
-];
-
-List<FoodModel> foodsFollowingData = [
   FoodModel(
     id: 1,
     name: "Schnitzel",

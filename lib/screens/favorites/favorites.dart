@@ -43,7 +43,9 @@ class FavoritesScreenState extends State<FavoritesScreen> {
       body: Center(
         child: activeUser!.favoredMeals.isEmpty
             ? const Text("No Favored Meals!")
-            : MealListProfileFavorite(foodList: mealsFavored),
+            : SingleChildScrollView(
+                child: MealListProfileFavorite(foodList: mealsFavored),
+              ),
       ),
       bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: 2),
     );

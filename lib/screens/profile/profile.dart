@@ -21,10 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    _mealsMade = foodsFoodCourtData
-        .where((meal) => meal.username == activeUser!.username)
-        .toList();
-    _mealsMade += foodsFollowingData
+    _mealsMade = foods
         .where((meal) => meal.username == activeUser!.username)
         .toList();
   }
