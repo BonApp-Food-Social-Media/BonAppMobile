@@ -1,9 +1,9 @@
-import 'package:bon_app_mobile/data/food_data.dart';
-import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
-import 'package:bon_app_mobile/global_widgets/custom_profile_tab_bar.dart';
-import 'package:bon_app_mobile/models/food_model.dart';
+import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
 import 'package:bon_app_mobile/screens/profile/settings.dart';
 import 'package:flutter/material.dart';
+import '../../data/food_data.dart';
+import '../../global_widgets/custom_navigation_bar.dart';
+import '../../models/food_model.dart';
 import '../../models/user_model.dart';
 import '../../singleton/active_user_singleton.dart';
 
@@ -49,11 +49,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             IconButton(
               onPressed: () {
                 Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsScreen()));
               },
               icon: const Icon(
                 Icons.settings,
@@ -75,14 +73,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(75),
                   child: FadeInImage(
-                    placeholder: const AssetImage(
-                        "assets/images/empty_profile_pic.webp"),
+                    placeholder: const NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"),
                     image: NetworkImage(activeUser!.profilePicURL),
                     fit: BoxFit.cover,
-                    width: 75,
-                    height: 75,
+                    width: 120,
+                    height: 120,
                   ),
                 ),
                 SizedBox(
@@ -91,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text(
                   activeUser!.username,
                   style: const TextStyle(
-                    fontSize: 25,
+                    fontSize: 35,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -126,11 +124,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               height: screenHeight * 0.1,
             ),
-            // Expanded(
-              ProfileTabView(),
-            // )
-
-
+            _mealsMade.isNotEmpty
+                ? MealListProfileFavorite(foodList: _mealsMade)
+                : const Center(
+                    child: Text(
+                      "You have not posted a meal yet...",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
           ],
         ),
       ),

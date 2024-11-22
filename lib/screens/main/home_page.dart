@@ -1,6 +1,6 @@
 import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
-import 'package:bon_app_mobile/screens/main/food_court.dart';
+import 'package:bon_app_mobile/screens/main/widgets/food_court.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/food_model.dart';

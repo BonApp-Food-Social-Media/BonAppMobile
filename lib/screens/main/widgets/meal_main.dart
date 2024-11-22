@@ -1,7 +1,10 @@
 import 'package:bon_app_mobile/models/food_model.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/screens/main/widgets/icon_row_foodcourt.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
 
-class MealMainPage extends StatelessWidget {
+class MealMainPage extends StatefulWidget {
   const MealMainPage({
     super.key,
     required this.foodModel,
@@ -14,6 +17,15 @@ class MealMainPage extends StatelessWidget {
   final bool isFoodCourt;
 
   @override
+  State<StatefulWidget> createState() {
+    return _MealMainPageState();
+  }
+}
+
+class _MealMainPageState extends State<MealMainPage> {
+  User? activeUser = ActiveUserSingleton().activeUser;
+
+  @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
@@ -21,20 +33,22 @@ class MealMainPage extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Dismissible(
-        key: ObjectKey(foodModel),
+        key: ObjectKey(widget.foodModel),
         direction: DismissDirection.horizontal,
-        onDismissed: onDismissed,
+        onDismissed: (direction) {
+          activeUser?.swipedMeals.add(widget.foodModel);
+
+          widget.onDismissed(direction);
+        },
         background: Container(
           color: Colors.white,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 20),
-          child: const Icon(Icons.check, color: Colors.black, size: 50,),
         ),
         secondaryBackground: Container(
           color: Colors.white,
           alignment: Alignment.centerRight,
           padding: const EdgeInsets.only(right: 20),
-          child: const Icon(Icons.delete, color: Colors.black, size: 50,),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,38 +59,54 @@ class MealMainPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    foodModel.username,
+                    widget.foodModel.username,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  if(isFoodCourt)
-                    ElevatedButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Subscribe",
-                          style: TextStyle(fontSize: 15),
-                        ))
+                  activeUser!.followingUsername
+                      .contains(widget.foodModel.username)
+                      ? OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        activeUser!.followingUsername
+                            .remove(widget.foodModel.username);
+                      });
+                    },
+                    child: const Text(
+                      "Subscribed",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  )
+                      : ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        activeUser!.followingUsername
+                            .add(widget.foodModel.username);
+                      });
+                    },
+                    child: const Text(
+                      "Subscribe",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  )
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: FadeInImage(
                 placeholder: const AssetImage(
-                  "assets/images/placeholder_or_error_image.jpg"
-                ),
+                    "assets/images/placeholder_or_error_image.jpg"),
                 image: NetworkImage(
-                  foodModel.imageURL,
+                  widget.foodModel.imageURL,
                 ),
                 fit: BoxFit.cover,
                 width: screenWidth * 0.8,
                 height: screenHeight * 0.5,
                 imageErrorBuilder: (context, error, stackTrace) {
                   return Image.asset(
-                    "assets/images/placeholder_or_error_image.jpg", // Use the same placeholder image
+                    "assets/images/placeholder_or_error_image.jpg",
                     fit: BoxFit.cover,
                     width: screenWidth * 0.8,
                     height: screenHeight * 0.5,
@@ -84,39 +114,14 @@ class MealMainPage extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Text(
-              foodModel.name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+              widget.foodModel.name,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 35),
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.favorite_border,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                Icon(
-                  Icons.outlined_flag,
-                  size: 30,
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                Icon(
-                  Icons.bookmark_border,
-                  size: 30,
-                ),
-              ],
-            )
+            const SizedBox(height: 20),
+            IconRowFoodCourt(foodModel: widget.foodModel),
           ],
         ),
       ),

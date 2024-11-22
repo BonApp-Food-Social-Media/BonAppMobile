@@ -1,11 +1,10 @@
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
-import 'package:bon_app_mobile/screens/profile/profile.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/user_model.dart';
-import '../main/home_page.dart';
-import '../new_meals/new_meal.dart';
+import '../../singleton/active_user_singleton.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -17,6 +16,14 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class FavoritesScreenState extends State<FavoritesScreen> {
+  User? activeUser = ActiveUserSingleton().activeUser;
+  List<FoodModel> mealsFavored = [];
+
+  @override
+  void initState() {
+    super.initState();
+    mealsFavored = activeUser!.favoredMeals;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +40,10 @@ class FavoritesScreenState extends State<FavoritesScreen> {
           ),
         ),
       ),
-      body: const Center(
-        child: Text("Currently implementing"),
+      body: Center(
+        child: activeUser!.favoredMeals.isEmpty
+            ? const Text("No Favored Meals!")
+            : MealListProfileFavorite(foodList: mealsFavored),
       ),
       bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: 2),
     );
