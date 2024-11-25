@@ -1,5 +1,3 @@
-import 'package:bon_app_mobile/models/food_model.dart';
-
 class User{
   const User({
     required this.username,
@@ -16,10 +14,10 @@ class User{
   final String username;
   final String email;
   final String password;
-  final List<FoodModel> favoredMeals;
+  final List<int> favoredMeals;
   final String profilePicURL;
   final List<String> followingUsername;
   final List<String> followersUsername;
-  final List<FoodModel> likedMeals;
-  final List<FoodModel> swipedMeals;
+  final List<int> likedMeals;
+  final List<int> swipedMeals;
 }

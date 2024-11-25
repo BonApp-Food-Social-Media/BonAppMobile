@@ -1,3 +1,4 @@
+import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
 import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
 import 'package:bon_app_mobile/models/food_model.dart';
@@ -22,7 +23,7 @@ class FavoritesScreenState extends State<FavoritesScreen> {
   @override
   void initState() {
     super.initState();
-    mealsFavored = activeUser!.favoredMeals;
+    mealsFavored = foods.where((food) => activeUser!.favoredMeals.contains(food.id)).toList();
   }
 
   @override

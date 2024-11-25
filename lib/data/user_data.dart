@@ -41,7 +41,7 @@ List<User> userData = [
   User(
     username: "DummyUser",
     email: "dummy@user.com",
-    password: "123546",
+    password: "123456",
     favoredMeals: [],
     profilePicURL:
         "https://img.freepik.com/premium-vector/businessman-avatar-illustration-cartoon-user-portrait-user-profile-icon_118339-4382.jpg",

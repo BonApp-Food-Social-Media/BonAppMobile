@@ -1,3 +1,4 @@
+import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../models/food_model.dart';
@@ -5,23 +6,43 @@ import '../../../models/user_model.dart';
 import '../../../singleton/active_user_singleton.dart';
 import 'meal_main.dart';
 
-class FoodCourtScreen extends StatelessWidget {
+class FoodCourtScreen extends StatefulWidget {
   const FoodCourtScreen({
     super.key,
-    required this.foods,
     required this.isFoodCourt,
-    required this.onDismissed,
   });
 
-  final List<FoodModel> foods;
   final bool isFoodCourt;
-  final void Function(DismissDirection, FoodModel) onDismissed;
 
+  @override
+  State<FoodCourtScreen> createState() => _FoodCourtScreenState();
+}
+
+class _FoodCourtScreenState extends State<FoodCourtScreen> {
   @override
   Widget build(BuildContext context) {
     User? activeUser = ActiveUserSingleton().activeUser;
 
-    final filteredFoods = foods.where((food) => food.username != activeUser!.username && !activeUser.swipedMeals.contains(food)).toList();
+    final foodCourtFood = foods
+        .where((food) =>
+            food.username != activeUser!.username &&
+            !activeUser.swipedMeals.contains(food.id))
+        .toList();
+
+    final followingFood = foods
+        .where((food) =>
+            food.username != activeUser!.username &&
+            !activeUser.swipedMeals.contains(food.id) &&
+            activeUser.followingUsername.contains(food.username))
+        .toList();
+
+    onDismissed(FoodModel food) {
+      setState(() {
+        widget.isFoodCourt
+            ? foodCourtFood.remove(food)
+            : followingFood.remove(food);
+      });
+    }
 
     return Center(
       child: Stack(
@@ -37,14 +58,24 @@ class FoodCourtScreen extends StatelessWidget {
               ),
             ),
           ),
-          for (var food in filteredFoods)
-            MealMainPage(
-              foodModel: food,
-              onDismissed: (direction) {
-                onDismissed(direction, food);
-              },
-              isFoodCourt: isFoodCourt,
-            ),
+          if (widget.isFoodCourt)
+            for (var food in foodCourtFood)
+              MealMainPage(
+                foodModel: food,
+                onDismissed: (direction) {
+                  onDismissed(food);
+                },
+                isFoodCourt: widget.isFoodCourt,
+              )
+          else
+            for (var food in followingFood)
+              MealMainPage(
+                foodModel: food,
+                onDismissed: (direction) {
+                  onDismissed(food);
+                },
+                isFoodCourt: widget.isFoodCourt,
+              ),
         ],
       ),
     );

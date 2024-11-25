@@ -26,8 +26,8 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
   @override
   void initState() {
     super.initState();
-    liked = activeUser?.likedMeals.contains(widget.foodModel) ?? false;
-    saved = activeUser?.favoredMeals.contains(widget.foodModel) ?? false;
+    liked = activeUser?.likedMeals.contains(widget.foodModel.id) ?? false;
+    saved = activeUser?.favoredMeals.contains(widget.foodModel.id) ?? false;
   }
 
   @override
@@ -41,7 +41,7 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
                   setState(() {
                     liked = false;
                     //TODO implement database here and not only delete the liked meal in the singleton but in the user in the database
-                    activeUser!.likedMeals.remove(widget.foodModel);
+                    activeUser!.likedMeals.remove(widget.foodModel.id);
                   });
                 },
                 icon: const Icon(
@@ -55,7 +55,7 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
                   setState(() {
                     liked = true;
                     //TODO implement database here and not only set the liked meal in the singleton but in the user in the database
-                    activeUser!.likedMeals.add(widget.foodModel);
+                    activeUser!.likedMeals.add(widget.foodModel.id);
                   });
                 },
                 icon: const Icon(
@@ -82,7 +82,7 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
                   setState(() {
                     saved = false;
                     //TODO implement database here and not only delete the favored meal in the singleton but in the user in the database
-                    activeUser!.favoredMeals.remove(widget.foodModel);
+                    activeUser!.favoredMeals.remove(widget.foodModel.id);
                   });
                 },
                 icon: const Icon(
@@ -95,7 +95,7 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
                   setState(() {
                     saved = true;
                     //TODO implement database here and not only set the favored meal in the singleton but in the user in the database
-                    activeUser!.favoredMeals.add(widget.foodModel);
+                    activeUser!.favoredMeals.add(widget.foodModel.id);
                   });
                 },
                 icon: const Icon(

@@ -25,7 +25,7 @@ class MealFavoriteAndProfile extends StatelessWidget {
         height: screenHeight * 0.2,
         imageErrorBuilder: (context, error, stackTrace) {
           return Image.asset(
-            "assets/images/placeholder_or_error_image.jpg",
+            "assets/images/no_image_found.png",
             fit: BoxFit.cover,
             width: screenWidth * 0.33,
             height: screenHeight * 0.2,

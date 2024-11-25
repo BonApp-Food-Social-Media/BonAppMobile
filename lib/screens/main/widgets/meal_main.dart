@@ -36,8 +36,7 @@ class _MealMainPageState extends State<MealMainPage> {
         key: ObjectKey(widget.foodModel),
         direction: DismissDirection.horizontal,
         onDismissed: (direction) {
-          activeUser?.swipedMeals.add(widget.foodModel);
-
+          activeUser?.swipedMeals.add(widget.foodModel.id);
           widget.onDismissed(direction);
         },
         background: Container(
@@ -106,7 +105,7 @@ class _MealMainPageState extends State<MealMainPage> {
                 height: screenHeight * 0.5,
                 imageErrorBuilder: (context, error, stackTrace) {
                   return Image.asset(
-                    "assets/images/placeholder_or_error_image.jpg",
+                    "assets/images/no_image_found.png",
                     fit: BoxFit.cover,
                     width: screenWidth * 0.8,
                     height: screenHeight * 0.5,
