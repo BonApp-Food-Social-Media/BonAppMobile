@@ -10,8 +10,10 @@ class MealListProfileFavorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<FoodModel> reversedList = foodList.reversed.toList();
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height, // Adjust as needed
+      height: MediaQuery.of(context).size.height,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -20,9 +22,9 @@ class MealListProfileFavorite extends StatelessWidget {
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
-        itemCount: foodList.length,
+        itemCount: reversedList.length,
         itemBuilder: (context, index) {
-          return MealFavoriteAndProfile(foodModel: foodList[index]);
+          return MealFavoriteAndProfile(foodModel: reversedList[index]);
         },
       ),
     );

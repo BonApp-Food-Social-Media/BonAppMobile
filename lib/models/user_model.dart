@@ -4,7 +4,6 @@ class User{
     required this.email,
     required this.password,
     required this.favoredMeals,
-    required this.profilePicURL,
     required this.followingUsername,
     required this.followersUsername,
     required this.likedMeals,
@@ -15,9 +14,10 @@ class User{
   final String email;
   final String password;
   final List<int> favoredMeals;
-  final String profilePicURL;
   final List<String> followingUsername;
   final List<String> followersUsername;
   final List<int> likedMeals;
   final List<int> swipedMeals;
 }
+
+//TODO potentially also change the profile pic to a local image.

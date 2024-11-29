@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/screens/full_width_meal/full_width_meal.dart';
 import 'package:bon_app_mobile/screens/main/widgets/icon_row_foodcourt.dart';
 import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
@@ -63,61 +66,66 @@ class _MealMainPageState extends State<MealMainPage> {
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   activeUser!.followingUsername
-                      .contains(widget.foodModel.username)
+                          .contains(widget.foodModel.username)
                       ? OutlinedButton(
-                    onPressed: () {
-                      setState(() {
-                        activeUser!.followingUsername
-                            .remove(widget.foodModel.username);
-                      });
-                    },
-                    child: const Text(
-                      "Subscribed",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  )
+                          onPressed: () {
+                            setState(() {
+                              activeUser!.followingUsername
+                                  .remove(widget.foodModel.username);
+                            });
+                          },
+                          child: const Text(
+                            "Subscribed",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        )
                       : ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        activeUser!.followingUsername
-                            .add(widget.foodModel.username);
-                      });
-                    },
-                    child: const Text(
-                      "Subscribe",
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  )
+                          onPressed: () {
+                            setState(() {
+                              activeUser!.followingUsername
+                                  .add(widget.foodModel.username);
+                            });
+                          },
+                          child: const Text(
+                            "Subscribe",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        )
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: FadeInImage(
-                placeholder: const AssetImage(
-                    "assets/images/placeholder_or_error_image.jpg"),
-                image: NetworkImage(
-                  widget.foodModel.imageURL,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FullWidthMeal(meal: widget.foodModel),
+                  ),
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.file(
+                  File(widget.foodModel.imagePath),
+                  fit: BoxFit.cover,
+                  width: screenWidth * 0.8,
+                  height: screenHeight * 0.5,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      "assets/images/no_image_found.png",
+                      fit: BoxFit.cover,
+                      width: screenWidth * 0.8,
+                      height: screenHeight * 0.5,
+                    );
+                  },
                 ),
-                fit: BoxFit.cover,
-                width: screenWidth * 0.8,
-                height: screenHeight * 0.5,
-                imageErrorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    "assets/images/no_image_found.png",
-                    fit: BoxFit.cover,
-                    width: screenWidth * 0.8,
-                    height: screenHeight * 0.5,
-                  );
-                },
               ),
             ),
             const SizedBox(height: 20),
             Text(
               widget.foodModel.name,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 35),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
             ),
             const SizedBox(height: 20),
             IconRowFoodCourt(foodModel: widget.foodModel),

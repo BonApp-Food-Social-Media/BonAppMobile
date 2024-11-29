@@ -2,7 +2,10 @@ import 'package:bon_app_mobile/data/user_data.dart';
 import 'package:bon_app_mobile/models/user_model.dart';
 import 'package:bon_app_mobile/screens/main/home_page.dart';
 import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 import 'package:flutter/material.dart';
+
+import '../../data/food_data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -91,10 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               );
                               if (activeUser != null) {
                                 ActiveUserSingleton().setUser(activeUser!);
+                                FoodListSingleton().setFoodList(foods);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => HomePageScreen(),
+                                    builder: (context) => const HomePageScreen(),
                                   ),
                                 );
                               }
