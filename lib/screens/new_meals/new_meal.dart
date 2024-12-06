@@ -40,7 +40,7 @@ class _NewMealScreenState extends State<NewMealScreen> {
         _selectedImage != null &&
         selectedFilters.isNotEmpty;
 
-    void _showFilterSelectionDialog() async {
+    void showFilterSelectionDialog() async {
       List<Filters> tempSelectedFilters = List.from(selectedFilters);
 
       await showDialog(
@@ -146,7 +146,7 @@ class _NewMealScreenState extends State<NewMealScreen> {
                       width: double.infinity,
                       child: FilledButton(
                         onPressed: () {
-                          _showFilterSelectionDialog();
+                          showFilterSelectionDialog();
                         },
                         child: Text(
                           selectedFilters.isEmpty
