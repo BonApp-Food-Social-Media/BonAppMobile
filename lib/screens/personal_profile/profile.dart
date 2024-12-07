@@ -1,5 +1,5 @@
 import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
-import 'package:bon_app_mobile/screens/profile/settings.dart';
+import 'package:bon_app_mobile/screens/personal_profile/settings.dart';
 import 'package:flutter/material.dart';
 import '../../data/food_data.dart';
 import '../../global_widgets/custom_navigation_bar.dart';

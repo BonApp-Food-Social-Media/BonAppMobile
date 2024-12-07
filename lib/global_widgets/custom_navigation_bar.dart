@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/favorites/favorites.dart';
 import '../screens/main/home_page.dart';
 import '../screens/new_meals/new_meal.dart';
-import '../screens/profile/profile.dart';
+import '../screens/personal_profile/profile.dart';
 
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key, required this.initialIndexOfScreen});
