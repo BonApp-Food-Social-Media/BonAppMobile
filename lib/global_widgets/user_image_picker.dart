@@ -79,17 +79,6 @@ class UserImagePickerState extends State<UserImagePicker> {
               ),
             ),
           ),
-
-          // TextButton.icon(
-          //   onPressed: _pickImage,
-          //   icon: const Icon(Icons.image),
-          //   label: Text(
-          //     "Add Image",
-          //     style: TextStyle(
-          //       color: Theme.of(context).colorScheme.primary,
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

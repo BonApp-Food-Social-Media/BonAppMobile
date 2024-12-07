@@ -1,3 +1,4 @@
+import 'package:bon_app_mobile/screens/report/report_meal.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/food_model.dart';
@@ -67,7 +68,14 @@ class _IconRowFoodCourt extends State<IconRowFoodCourt> {
           width: 50,
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ReportMeal(meal: widget.foodModel),
+              ),
+            );
+          },
           icon: const Icon(
             Icons.outlined_flag,
             size: 30,

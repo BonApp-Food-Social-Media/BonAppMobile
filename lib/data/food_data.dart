@@ -4,304 +4,331 @@ import '../enum/filters.dart';
 import '../enum/time.dart';
 
 List<FoodModel> foods = [
-  FoodModel(
+  const FoodModel(
     id: 1,
     name: "Lasagne",
-    imageURL: "https://files.cleverleben.at/clever_downloads/recipes/Recipe_316.jpg",
+    imagePath:
+        "https://files.cleverleben.at/clever_downloads/recipes/Recipe_316.jpg",
     time: Time.slow,
     ingredients: "Pasta, Tomato Sauce, Cheese",
     steps: "Cook pasta, Layer ingredients, Bake",
     username: "DummyUser",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.baked],
   ),
-  FoodModel(
+  const FoodModel(
     id: 2,
     name: "Spaghetti Bolognese",
-    imageURL: "https://img.hellofresh.com/f_auto,fl_lossy,h_640,q_auto,w_1200/hellofresh_s3/image/klassische-pasta-bolognese-mit-rinderhack-thermomix-a5dbe0ad.jpg",
+    imagePath:
+        "https://img.hellofresh.com/f_auto,fl_lossy,h_640,q_auto,w_1200/hellofresh_s3/image/klassische-pasta-bolognese-mit-rinderhack-thermomix-a5dbe0ad.jpg",
     time: Time.halfSlow,
     ingredients: "Spaghetti, Ground Meat, Tomato Sauce",
     steps: "Boil pasta, Cook sauce, Serve",
     username: "user",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.healthy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 3,
     name: "Pizza Margherita",
-    imageURL: "https://img1.kochrezepte.at/use/1/pizza-margherita_1755.jpg",
+    imagePath: "https://img1.kochrezepte.at/use/1/pizza-margherita_1755.jpg",
     time: Time.halfSlow,
     ingredients: "Pizza Dough, Tomato Sauce, Cheese",
     steps: "Prepare dough, Add toppings, Bake",
     username: "user2",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.baked],
   ),
-  FoodModel(
+  const FoodModel(
     id: 4,
     name: "Pizza Prosciutto",
-    imageURL: "https://www.lieferando.de/foodwiki/uploads/sites/8/2019/04/pizza-prosciutto-crudo-1080x1080.jpg",
+    imagePath:
+        "https://www.lieferando.de/foodwiki/uploads/sites/8/2019/04/pizza-prosciutto-crudo-1080x1080.jpg",
     time: Time.halfSlow,
     ingredients: "Pizza Dough, Prosciutto, Cheese",
     steps: "Prepare dough, Add toppings, Bake",
     username: "user3",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.fried],
   ),
-  FoodModel(
+  const FoodModel(
     id: 5,
     name: "Caesar Salad",
-    imageURL: "https://www.jocooks.com/wp-content/uploads/2020/07/caesar-salad-1-12.jpg",
+    imagePath:
+        "https://www.jocooks.com/wp-content/uploads/2020/07/caesar-salad-1-12.jpg",
     time: Time.fast,
     ingredients: "Lettuce, Parmesan Cheese, Croutons",
     steps: "Chop lettuce, Add dressing, Toss",
     username: "DummyUser",
-    filters: Filters.healthy,
+    filters: [Filters.healthy, Filters.vegetarian],
   ),
-  FoodModel(
+  const FoodModel(
     id: 6,
     name: "Schnitzel",
-    imageURL: "https://mehr-genuss.de/wp-content/uploads/Schnitzel-zubereiten-knusprig-saftig-Rezept.jpg",
+    imagePath:
+        "https://mehr-genuss.de/wp-content/uploads/Schnitzel-zubereiten-knusprig-saftig-Rezept.jpg",
     time: Time.halfSlow,
     ingredients: "Pork Cutlet, Breadcrumbs, Eggs",
     steps: "Bread cutlet, Fry, Serve",
     username: "user",
-    filters: Filters.german,
+    filters: [Filters.german, Filters.fried],
   ),
-  FoodModel(
+  const FoodModel(
     id: 7,
     name: "Kalbsbratwurst",
-    imageURL: "https://www.metzgerei.de/media/d5/24/9c/1627975773/299_Kalbsbratwurst_gebraten.jpg",
+    imagePath:
+        "https://www.metzgerei.de/media/d5/24/9c/1627975773/299_Kalbsbratwurst_gebraten.jpg",
     time: Time.halfFast,
     ingredients: "Veal Sausages, Mustard",
     steps: "Grill sausage, Serve with mustard",
     username: "user2",
-    filters: Filters.german,
+    filters: [Filters.german, Filters.british],
   ),
-  FoodModel(
+  const FoodModel(
     id: 8,
     name: "Entrecôt de boeuf",
-    imageURL: "https://lacavebeefclub.fr/wp-content/uploads/2017/01/boeuf-viande-tendre-filet-boeuf-e1534239243521.jpg",
+    imagePath:
+        "https://lacavebeefclub.fr/wp-content/uploads/2017/01/boeuf-viande-tendre-filet-boeuf-e1534239243521.jpg",
     time: Time.halfSlow,
     ingredients: "Beef Steak, Salt, Pepper",
     steps: "Season steak, Grill, Serve",
     username: "user3",
-    filters: Filters.french,
+    filters: [Filters.french, Filters.gourmet],
   ),
-  FoodModel(
+  const FoodModel(
     id: 9,
     name: "Sushi",
-    imageURL: "https://www.kikkoman.ch/fileadmin/_processed_/4/2/csm_sushi-kakkoii_2c56fe3133.webp",
+    imagePath:
+        "https://www.kikkoman.ch/fileadmin/_processed_/4/2/csm_sushi-kakkoii_2c56fe3133.webp",
     time: Time.slow,
     ingredients: "Rice, Fish, Seaweed",
     steps: "Cook rice, Roll sushi, Serve",
     username: "DummyUser",
-    filters: Filters.japanese,
+    filters: [Filters.japanese, Filters.healthy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 10,
     name: "Pulled Pork Burger",
-    imageURL: "https://m.bettybossi.ch/static/rezepte/x/bb_bbzh210915_0005a_x.jpg",
+    imagePath:
+        "https://m.bettybossi.ch/static/rezepte/x/bb_bbzh210915_0005a_x.jpg",
     time: Time.slow,
     ingredients: "Pulled Pork, Bun, Coleslaw",
     steps: "Cook pork, Assemble burger, Serve",
     username: "user",
-    filters: Filters.american,
+    filters: [Filters.american, Filters.gourmet],
   ),
-  FoodModel(
+  const FoodModel(
     id: 11,
     name: "Beef Wellington",
-    imageURL: "https://www.thedorsetmeatcompany.co.uk/theme-content/uploads/2020/08/Beef-Wellington_004.jpg",
+    imagePath:
+        "https://www.thedorsetmeatcompany.co.uk/theme-content/uploads/2020/08/Beef-Wellington_004.jpg",
     time: Time.slow,
     ingredients: "Beef fillet, Puff pastry, Mushrooms",
     steps: "Prepare beef, Wrap in pastry, Bake",
     username: "user2",
-    filters: Filters.gourmet,
+    filters: [Filters.gourmet, Filters.british],
   ),
-  FoodModel(
+  const FoodModel(
     id: 12,
     name: "Butter Chicken",
-    imageURL: "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg",
+    imagePath:
+        "https://images.immediate.co.uk/production/volatile/sites/30/2021/02/butter-chicken-ac2ff98.jpg",
     time: Time.halfSlow,
     ingredients: "Chicken, Butter, Cream",
     steps: "Marinate chicken, Cook with cream, Serve",
     username: "user3",
-    filters: Filters.creamy,
+    filters: [Filters.creamy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 13,
     name: "Paella",
-    imageURL: "https://die-frau-am-grill.de/wp-content/uploads/paella-rezept.jpg",
+    imagePath:
+        "https://die-frau-am-grill.de/wp-content/uploads/paella-rezept.jpg",
     time: Time.halfSlow,
     ingredients: "Rice, Saffron, Seafood",
     steps: "Cook rice with saffron, Add seafood, Serve",
     username: "DummyUser",
-    filters: Filters.seafood,
+    filters: [Filters.seafood, Filters.spanish],
   ),
-  FoodModel(
+  const FoodModel(
     id: 14,
     name: "Pho",
-    imageURL: "https://cdn.asiastreetfood.com/uploads/Pho-Bo-rindfleischsuppe-saigon-vietnam-rezept1.jpg?strip=all&lossy=1&quality=80&ssl=1",
+    imagePath:
+        "https://cdn.asiastreetfood.com/uploads/Pho-Bo-rindfleischsuppe-saigon-vietnam-rezept1.jpg?strip=all&lossy=1&quality=80&ssl=1",
     time: Time.slow,
     ingredients: "Beef, Rice Noodles, Broth",
     steps: "Simmer broth, Cook noodles, Serve",
     username: "user",
-    filters: Filters.vietnamese,
+    filters: [Filters.vietnamese, Filters.healthy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 15,
     name: "Lobster Thermidor",
-    imageURL: "https://www.royalgreenland.com/globalassets/recipes/hummerparmesangratineret.jpg?transform=downfill&quality=80&width=830&height=606&h=04e728898d421e18e50a19a7f064612c1b855780",
+    imagePath:
+        "https://www.royalgreenland.com/globalassets/recipes/hummerparmesangratineret.jpg?transform=downfill&quality=80&width=830&height=606&h=04e728898d421e18e50a19a7f064612c1b855780",
     time: Time.halfFast,
     ingredients: "Lobster, Mustard, Cream",
     steps: "Cook lobster, Prepare sauce, Bake",
     username: "user2",
-    filters: Filters.seafood,
+    filters: [Filters.seafood, Filters.gourmet],
   ),
-  FoodModel(
+  const FoodModel(
     id: 16,
     name: "Carpaccio",
-    imageURL: "https://recipecontent.fooby.ch/13690_3-2_1440-960.jpg",
+    imagePath: "https://recipecontent.fooby.ch/13690_3-2_1440-960.jpg",
     time: Time.fast,
     ingredients: "Beef, Olive oil, Parmesan",
     steps: "Thinly slice beef, Dress, Serve",
     username: "user3",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.gourmet],
   ),
-  FoodModel(
+  const FoodModel(
     id: 17,
     name: "Miso Ramen",
-    imageURL: "https://images.prismic.io/nahrin/38ec7ff6-df84-424b-9628-addc3f6b9e37_miso-ramen-rezept-mit-poulet-oder-tofu.jpg?auto=compress,format",
+    imagePath:
+        "https://images.prismic.io/nahrin/38ec7ff6-df84-424b-9628-addc3f6b9e37_miso-ramen-rezept-mit-poulet-oder-tofu.jpg?auto=compress,format",
     time: Time.halfFast,
     ingredients: "Ramen Noodles, Miso, Pork Belly",
     steps: "Cook noodles, Prepare broth, Serve",
     username: "user",
-    filters: Filters.japanese,
+    filters: [Filters.japanese, Filters.spicy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 18,
     name: "Chicken Parmesan",
-    imageURL: "https://tastesbetterfromscratch.com/wp-content/uploads/2023/03/Chicken-Parmesan-1.jpg",
+    imagePath:
+        "https://tastesbetterfromscratch.com/wp-content/uploads/2023/03/Chicken-Parmesan-1.jpg",
     time: Time.halfSlow,
     ingredients: "Chicken Breast, Marinara Sauce, Mozzarella",
     steps: "Bread chicken, Fry, Bake with sauce",
     username: "user2",
-    filters: Filters.italian,
+    filters: [Filters.italian, Filters.creamy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 19,
     name: "Falafel",
-    imageURL: "https://assets.unileversolutions.com/recipes-v2/242429.jpg",
+    imagePath: "https://assets.unileversolutions.com/recipes-v2/242429.jpg",
     time: Time.halfFast,
     ingredients: "Chickpeas, Herbs, Spices",
     steps: "Blend ingredients, Form balls, Fry",
     username: "user3",
-    filters: Filters.vegetarian,
+    filters: [Filters.vegetarian, Filters.vegan],
   ),
-  FoodModel(
+  const FoodModel(
     id: 20,
     name: "Tiramisu",
-    imageURL: "https://api.swissmilk.ch/wp-content/uploads/2019/06/tiramisu-2560x1920.jpg",
+    imagePath:
+        "https://api.swissmilk.ch/wp-content/uploads/2019/06/tiramisu-2560x1920.jpg",
     time: Time.fast,
     ingredients: "Mascarpone, Ladyfingers, Coffee",
     steps: "Layer ingredients, Chill, Serve",
     username: "DummyUser",
-    filters: Filters.dessert,
+    filters: [Filters.dessert, Filters.italian],
   ),
-  FoodModel(
+  const FoodModel(
     id: 21,
     name: "Korean BBQ Beef",
-    imageURL: "https://www.allrecipes.com/thmb/G_UXncCchkMVeELX8DQMEwJOdHI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/246172-Easy-Bulgogi-ddmfs-104-4x3-1-c0ddcab340474175a5d1c96bc2edabbc.jpg",
+    imagePath:
+        "https://www.allrecipes.com/thmb/G_UXncCchkMVeELX8DQMEwJOdHI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/246172-Easy-Bulgogi-ddmfs-104-4x3-1-c0ddcab340474175a5d1c96bc2edabbc.jpg",
     time: Time.halfFast,
     ingredients: "Beef, Soy Sauce, Sugar",
     steps: "Marinate beef, Grill, Serve with sides",
     username: "user",
-    filters: Filters.korean,
+    filters: [Filters.korean, Filters.spicy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 22,
     name: "Tom Yum Soup",
-    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxWz9cTtWmg8q9cNuygLcZY4j4LIvcnY8qA&s",
+    imagePath:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJxWz9cTtWmg8q9cNuygLcZY4j4LIvcnY8qA&s",
     time: Time.fast,
     ingredients: "Shrimp, Lemongrass, Chili",
     steps: "Boil broth, Add shrimp, Season",
     username: "user2",
-    filters: Filters.spicy,
+    filters: [Filters.spicy, Filters.thai],
   ),
-  FoodModel(
+  const FoodModel(
     id: 23,
     name: "Fish and Chips",
-    imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyHib0tq2q_3gdNXTPR5ceJdv87YM2GBtk3Q&s",
+    imagePath:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyHib0tq2q_3gdNXTPR5ceJdv87YM2GBtk3Q&s",
     time: Time.halfFast,
     ingredients: "Cod, Potatoes, Flour",
     steps: "Batter fish, Fry, Serve with fries",
     username: "user3",
-    filters: Filters.fried,
+    filters: [Filters.fried, Filters.british],
   ),
-  FoodModel(
+  const FoodModel(
     id: 24,
     name: "Pad See Ew",
-    imageURL: "https://www.recipetineats.com/tachyon/2019/03/Pad-See-Ew_2-SQ.jpg",
+    imagePath:
+        "https://www.recipetineats.com/tachyon/2019/03/Pad-See-Ew_2-SQ.jpg",
     time: Time.fast,
     ingredients: "Flat Rice Noodles, Chicken, Broccoli",
     steps: "Stir fry noodles and chicken, Serve",
     username: "DummyUser",
-    filters: Filters.thai,
+    filters: [Filters.thai, Filters.healthy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 25,
     name: "Peking Duck",
-    imageURL: "https://res.cloudinary.com/hellochef/image/upload/c_scale,w_1084/dpr_2.0/f_webp/q_auto/c_scale,w_380/z1pzqhs98wrm0zdg9mdw?_a=DATAdtAAZAA0",
+    imagePath:
+        "https://res.cloudinary.com/hellochef/image/upload/c_scale,w_1084/dpr_2.0/f_webp/q_auto/c_scale,w_380/z1pzqhs98wrm0zdg9mdw?_a=DATAdtAAZAA0",
     time: Time.slow,
     ingredients: "Duck, Hoisin Sauce, Pancakes",
     steps: "Roast duck, Serve with pancakes",
     username: "user",
-    filters: Filters.chinese,
+    filters: [Filters.chinese, Filters.gourmet],
   ),
-  FoodModel(
+  const FoodModel(
     id: 26,
     name: "Bibimbap",
-    imageURL: "https://cdn.stoneline.de/media/3f/12/g0/1727431220/koreanisches-bibimbap.jpeg",
+    imagePath:
+        "https://cdn.stoneline.de/media/3f/12/g0/1727431220/koreanisches-bibimbap.jpeg",
     time: Time.halfSlow,
     ingredients: "Rice, Vegetables, Egg",
     steps: "Assemble ingredients, Serve hot",
     username: "user2",
-    filters: Filters.korean,
+    filters: [Filters.korean, Filters.healthy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 27,
     name: "Gazpacho",
-    imageURL: "https://jz.img0.cz/media/bb/6a/bb6a156f-571e-4ded-8977-01ab66a58b6a.jpg.570x570_q85_crop.jpg",
+    imagePath:
+        "https://jz.img0.cz/media/bb/6a/bb6a156f-571e-4ded-8977-01ab66a58b6a.jpg.570x570_q85_crop.jpg",
     time: Time.fast,
     ingredients: "Tomato, Cucumber, Bell pepper",
     steps: "Blend ingredients, Chill, Serve",
     username: "user3",
-    filters: Filters.spanish,
+    filters: [Filters.spanish, Filters.vegan],
   ),
-  FoodModel(
+  const FoodModel(
     id: 28,
     name: "Chili Con Carne",
-    imageURL: "https://img.chefkoch-cdn.de/rezepte/1578671265353584/bilder/1509269/crop-960x720/chili-con-carne.jpg",
+    imagePath:
+        "https://img.chefkoch-cdn.de/rezepte/1578671265353584/bilder/1509269/crop-960x720/chili-con-carne.jpg",
     time: Time.slow,
     ingredients: "Ground Beef, Kidney Beans, Chili",
     steps: "Cook beef with chili, Add beans, Simmer",
     username: "DummyUser",
-    filters: Filters.mexican,
+    filters: [Filters.mexican, Filters.spicy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 29,
     name: "Chicken Tikka Masala",
-    imageURL: "https://shibaskitchen.de/wp-content/uploads/2021/06/P1110181-scaled.jpg",
+    imagePath:
+        "https://shibaskitchen.de/wp-content/uploads/2021/06/P1110181-scaled.jpg",
     time: Time.halfFast,
     ingredients: "Chicken, Yogurt, Tomato Sauce",
     steps: "Marinate chicken, Cook with sauce, Serve",
     username: "user",
-    filters: Filters.creamy,
+    filters: [Filters.creamy],
   ),
-  FoodModel(
+  const FoodModel(
     id: 30,
     name: "Coleslaw",
-    imageURL: "https://img.chefkoch-cdn.de/rezepte/2875431439821936/bilder/1570447/crop-960x720/amerikanischer-krautsalat-coleslaw.jpg",
+    imagePath:
+        "https://img.chefkoch-cdn.de/rezepte/2875431439821936/bilder/1570447/crop-960x720/amerikanischer-krautsalat-coleslaw.jpg",
     time: Time.fast,
     ingredients: "Cabbage, Carrots, Mayonnaise",
     steps: "Shred ingredients, Mix with dressing, Chill",
     username: "user2",
-    filters: Filters.american,
+    filters: [Filters.american, Filters.healthy],
   ),
 ];

@@ -56,7 +56,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         );
         break;
       case 1:
-        Navigator.pushReplacement(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => const NewMealScreen(),
@@ -101,9 +101,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           ),
           label: "Go to FoodCourt",
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(
-            isNewMeal ? Icons.add_box : Icons.add_box_outlined,
+            Icons.add_box_outlined,
             color: Colors.black,
           ),
           label: "Create a dream Recipe",

@@ -14,7 +14,7 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   User? activeUser = ActiveUserSingleton().activeUser;
-  var _isFoodCourt = true;
+  bool _isFoodCourt = true;
 
   @override
   Widget build(BuildContext context) {

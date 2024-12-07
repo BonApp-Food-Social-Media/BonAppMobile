@@ -1,9 +1,9 @@
-import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../models/food_model.dart';
 import '../../../models/user_model.dart';
 import '../../../singleton/active_user_singleton.dart';
+import '../../../singleton/food_list_singleton.dart';
 import 'meal_main.dart';
 
 class FoodCourtScreen extends StatefulWidget {
@@ -19,22 +19,35 @@ class FoodCourtScreen extends StatefulWidget {
 }
 
 class _FoodCourtScreenState extends State<FoodCourtScreen> {
+  List<FoodModel>? meals = FoodListSingleton().foodsList;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     User? activeUser = ActiveUserSingleton().activeUser;
 
-    final foodCourtFood = foods
-        .where((food) =>
-            food.username != activeUser!.username &&
-            !activeUser.swipedMeals.contains(food.id))
-        .toList();
+    final foodCourtFood = meals != null
+        ? meals!
+            .where((food) =>
+                food.username != activeUser!.username &&
+                !activeUser.swipedMeals.contains(food.id))
+            .toList()
+        : [];
 
-    final followingFood = foods
-        .where((food) =>
-            food.username != activeUser!.username &&
-            !activeUser.swipedMeals.contains(food.id) &&
-            activeUser.followingUsername.contains(food.username))
-        .toList();
+    final followingFood = meals != null
+        ? meals!
+            .where((food) =>
+                food.username != activeUser!.username &&
+                !activeUser.swipedMeals.contains(food.id) &&
+                activeUser.followingUsername.contains(food.username))
+            .toList()
+        : [];
 
     onDismissed(FoodModel food) {
       setState(() {

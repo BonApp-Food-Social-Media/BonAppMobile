@@ -1,4 +1,3 @@
-import 'package:bon_app_mobile/data/food_data.dart';
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
 import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
 import 'package:bon_app_mobile/models/food_model.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/user_model.dart';
 import '../../singleton/active_user_singleton.dart';
+import '../../singleton/food_list_singleton.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -18,12 +18,13 @@ class FavoritesScreen extends StatefulWidget {
 
 class FavoritesScreenState extends State<FavoritesScreen> {
   User? activeUser = ActiveUserSingleton().activeUser;
+  List<FoodModel>? meals = FoodListSingleton().foodsList;
   List<FoodModel> mealsFavored = [];
 
   @override
   void initState() {
     super.initState();
-    mealsFavored = foods.where((food) => activeUser!.favoredMeals.contains(food.id)).toList();
+    mealsFavored = meals!.where((food) => activeUser!.favoredMeals.contains(food.id)).toList();
   }
 
   @override
