@@ -4,7 +4,7 @@ import '../enum/filters.dart';
 import '../enum/time.dart';
 
 List<FoodModel> foods = [
-  const FoodModel(
+  FoodModel(
     id: 1,
     name: "Lasagne",
     imagePath:
@@ -15,7 +15,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.italian, Filters.baked],
   ),
-  const FoodModel(
+  FoodModel(
     id: 2,
     name: "Spaghetti Bolognese",
     imagePath:
@@ -26,7 +26,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.italian, Filters.healthy],
   ),
-  const FoodModel(
+  FoodModel(
     id: 3,
     name: "Pizza Margherita",
     imagePath: "https://img1.kochrezepte.at/use/1/pizza-margherita_1755.jpg",
@@ -36,7 +36,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.italian, Filters.baked],
   ),
-  const FoodModel(
+  FoodModel(
     id: 4,
     name: "Pizza Prosciutto",
     imagePath:
@@ -47,7 +47,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.italian, Filters.fried],
   ),
-  const FoodModel(
+  FoodModel(
     id: 5,
     name: "Caesar Salad",
     imagePath:
@@ -58,7 +58,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.healthy, Filters.vegetarian],
   ),
-  const FoodModel(
+  FoodModel(
     id: 6,
     name: "Schnitzel",
     imagePath:
@@ -69,7 +69,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.german, Filters.fried],
   ),
-  const FoodModel(
+   FoodModel(
     id: 7,
     name: "Kalbsbratwurst",
     imagePath:
@@ -80,7 +80,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.german, Filters.british],
   ),
-  const FoodModel(
+   FoodModel(
     id: 8,
     name: "Entrecôt de boeuf",
     imagePath:
@@ -91,7 +91,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.french, Filters.gourmet],
   ),
-  const FoodModel(
+   FoodModel(
     id: 9,
     name: "Sushi",
     imagePath:
@@ -102,7 +102,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.japanese, Filters.healthy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 10,
     name: "Pulled Pork Burger",
     imagePath:
@@ -113,7 +113,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.american, Filters.gourmet],
   ),
-  const FoodModel(
+   FoodModel(
     id: 11,
     name: "Beef Wellington",
     imagePath:
@@ -124,7 +124,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.gourmet, Filters.british],
   ),
-  const FoodModel(
+   FoodModel(
     id: 12,
     name: "Butter Chicken",
     imagePath:
@@ -135,7 +135,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.creamy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 13,
     name: "Paella",
     imagePath:
@@ -146,7 +146,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.seafood, Filters.spanish],
   ),
-  const FoodModel(
+   FoodModel(
     id: 14,
     name: "Pho",
     imagePath:
@@ -157,7 +157,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.vietnamese, Filters.healthy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 15,
     name: "Lobster Thermidor",
     imagePath:
@@ -168,7 +168,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.seafood, Filters.gourmet],
   ),
-  const FoodModel(
+   FoodModel(
     id: 16,
     name: "Carpaccio",
     imagePath: "https://recipecontent.fooby.ch/13690_3-2_1440-960.jpg",
@@ -178,7 +178,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.italian, Filters.gourmet],
   ),
-  const FoodModel(
+   FoodModel(
     id: 17,
     name: "Miso Ramen",
     imagePath:
@@ -189,7 +189,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.japanese, Filters.spicy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 18,
     name: "Chicken Parmesan",
     imagePath:
@@ -200,7 +200,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.italian, Filters.creamy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 19,
     name: "Falafel",
     imagePath: "https://assets.unileversolutions.com/recipes-v2/242429.jpg",
@@ -210,7 +210,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.vegetarian, Filters.vegan],
   ),
-  const FoodModel(
+   FoodModel(
     id: 20,
     name: "Tiramisu",
     imagePath:
@@ -221,7 +221,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.dessert, Filters.italian],
   ),
-  const FoodModel(
+   FoodModel(
     id: 21,
     name: "Korean BBQ Beef",
     imagePath:
@@ -232,7 +232,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.korean, Filters.spicy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 22,
     name: "Tom Yum Soup",
     imagePath:
@@ -243,7 +243,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.spicy, Filters.thai],
   ),
-  const FoodModel(
+   FoodModel(
     id: 23,
     name: "Fish and Chips",
     imagePath:
@@ -254,7 +254,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.fried, Filters.british],
   ),
-  const FoodModel(
+   FoodModel(
     id: 24,
     name: "Pad See Ew",
     imagePath:
@@ -265,7 +265,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.thai, Filters.healthy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 25,
     name: "Peking Duck",
     imagePath:
@@ -276,7 +276,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.chinese, Filters.gourmet],
   ),
-  const FoodModel(
+   FoodModel(
     id: 26,
     name: "Bibimbap",
     imagePath:
@@ -287,7 +287,7 @@ List<FoodModel> foods = [
     username: "user2",
     filters: [Filters.korean, Filters.healthy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 27,
     name: "Gazpacho",
     imagePath:
@@ -298,7 +298,7 @@ List<FoodModel> foods = [
     username: "user3",
     filters: [Filters.spanish, Filters.vegan],
   ),
-  const FoodModel(
+   FoodModel(
     id: 28,
     name: "Chili Con Carne",
     imagePath:
@@ -309,7 +309,7 @@ List<FoodModel> foods = [
     username: "DummyUser",
     filters: [Filters.mexican, Filters.spicy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 29,
     name: "Chicken Tikka Masala",
     imagePath:
@@ -320,7 +320,7 @@ List<FoodModel> foods = [
     username: "user",
     filters: [Filters.creamy],
   ),
-  const FoodModel(
+   FoodModel(
     id: 30,
     name: "Coleslaw",
     imagePath:

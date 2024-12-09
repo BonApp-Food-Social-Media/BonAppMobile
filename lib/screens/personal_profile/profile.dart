@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import '../../global_widgets/custom_navigation_bar.dart';
 import '../../models/food_model.dart';
 import '../../models/user_model.dart';
-import '../../singleton/active_user_singleton.dart';
 import '../../singleton/food_list_singleton.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, required this.user});
+
+  final User user;
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -17,18 +18,16 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   List<FoodModel> _mealsMade = [];
   List<FoodModel>? meals = FoodListSingleton().foodsList;
-  User? activeUser = ActiveUserSingleton().activeUser;
 
   @override
   void initState() {
     super.initState();
     _mealsMade =
-        meals!.where((meal) => meal.username == activeUser!.username).toList();
+        meals!.where((meal) => meal.username == widget.user.username).toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -68,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: screenHeight * 0.05,
             ),
             Text(
-              activeUser!.username,
+              widget.user.username,
               style: const TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
@@ -87,13 +86,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 Text(
-                  "${activeUser!.followersUsername.length} Followers",
+                  "${widget.user.followersUsername.length} Followers",
                   style: const TextStyle(
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "${activeUser!.followingUsername.length} Following",
+                  "${widget.user.followingUsername.length} Following",
                   style: const TextStyle(
                     fontSize: 20,
                   ),

@@ -1,5 +1,7 @@
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
 
+import '../models/user_model.dart';
 import '../screens/favorites/favorites.dart';
 import '../screens/main/home_page.dart';
 import '../screens/new_meals/new_meal.dart';
@@ -20,6 +22,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   bool isNewMeal = false;
   bool isFavorite = false;
   bool isProfile = false;
+  User? activeUser = ActiveUserSingleton().activeUser;
 
   @override
   void initState() {
@@ -75,7 +78,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const ProfileScreen(),
+            builder: (context) => ProfileScreen(user: activeUser!,),
           ),
         );
         break;
