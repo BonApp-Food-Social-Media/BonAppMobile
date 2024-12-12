@@ -1,18 +1,27 @@
 import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
 import 'package:bon_app_mobile/screens/personal_profile/settings.dart';
 import 'package:flutter/material.dart';
-import '../../global_widgets/custom_navigation_bar.dart';
-import '../../models/food_model.dart';
-import '../../models/user_model.dart';
-import '../../singleton/food_list_singleton.dart';
+import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key, required this.user});
+  const ProfileScreen({
+    super.key,
+    required this.user,
+    required this.isPersonalProfile,
+    required this.showBackButton,
+  });
 
   final User user;
+  final bool isPersonalProfile;
+  final bool showBackButton;
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  State<StatefulWidget> createState() {
+    return _ProfileScreenState();
+  }
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
@@ -36,25 +45,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Your Profile",
-              style: TextStyle(
+            if(widget.showBackButton)
+              IconButton(onPressed: () {Navigator.pop(context);}, icon: const Icon(Icons.arrow_back)),
+            Text(
+              widget.isPersonalProfile ?
+              "Your Profile" : widget.user.username,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SettingsScreen()));
-              },
-              icon: const Icon(
-                Icons.settings,
-                color: Colors.black,
-                size: 30,
+            if(!widget.showBackButton)
+              IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsScreen()));
+                },
+                icon: const Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                  size: 30,
+                ),
               ),
-            ),
           ],
         ),
       ),
@@ -104,10 +117,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             _mealsMade.isNotEmpty
                 ? MealListProfileFavorite(foodList: _mealsMade)
-                : const Center(
+                : Center(
                     child: Text(
-                      "You have not posted a meal yet...",
-                      style: TextStyle(
+                      widget.isPersonalProfile
+                          ? "You have not posted a meal yet..."
+                          : "There are strangely no meals!",
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
@@ -116,8 +131,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: const CustomNavigationBar(initialIndexOfScreen: 3),
+      bottomNavigationBar: widget.isPersonalProfile
+          ? const CustomNavigationBar(initialIndexOfScreen: 3)
+          : null,
     );
   }
 }
-//TODO implement

@@ -4,16 +4,18 @@ import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:bon_app_mobile/models/user_model.dart';
 import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
-import '../../enum/filters.dart';
-import '../../enum/time.dart';
-import '../../global_widgets/user_image_picker.dart';
-import '../../singleton/food_list_singleton.dart';
+import 'package:bon_app_mobile/enum/filters.dart';
+import 'package:bon_app_mobile/enum/time.dart';
+import 'package:bon_app_mobile/global_widgets/user_image_picker.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 
 class NewMealScreen extends StatefulWidget {
   const NewMealScreen({super.key});
 
   @override
-  _NewMealScreenState createState() => _NewMealScreenState();
+  State<StatefulWidget> createState() {
+    return _NewMealScreenState();
+  }
 }
 
 class _NewMealScreenState extends State<NewMealScreen> {

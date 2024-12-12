@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:bon_app_mobile/data/user_data.dart';
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:bon_app_mobile/models/user_model.dart';
 import 'package:bon_app_mobile/screens/full_width_meal/full_width_meal.dart';
 import 'package:bon_app_mobile/screens/main/widgets/icon_row_foodcourt.dart';
 import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:flutter/material.dart';
+import 'package:bon_app_mobile/screens/personal_profile/profile.dart';
 
 class MealMainPage extends StatefulWidget {
   const MealMainPage({
@@ -60,10 +62,21 @@ class _MealMainPageState extends State<MealMainPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    widget.foodModel.username,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: (){
+                      User userToShow = userData.where((user) => user.username == widget.foodModel.username).first;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileScreen(user: userToShow, isPersonalProfile: false, showBackButton: true,),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      widget.foodModel.username,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   activeUser!.followingUsername
                           .contains(widget.foodModel.username)

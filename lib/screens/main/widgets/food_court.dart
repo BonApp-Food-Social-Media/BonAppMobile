@@ -21,12 +21,6 @@ class FoodCourtScreen extends StatefulWidget {
 class _FoodCourtScreenState extends State<FoodCourtScreen> {
   List<FoodModel>? meals = FoodListSingleton().foodsList;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-  }
 
   @override
   Widget build(BuildContext context) {

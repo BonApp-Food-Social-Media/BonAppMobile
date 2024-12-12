@@ -4,14 +4,15 @@ import 'package:bon_app_mobile/screens/main/home_page.dart';
 import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 import 'package:flutter/material.dart';
-
-import '../../data/food_data.dart';
+import 'package:bon_app_mobile/data/food_data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<StatefulWidget> createState() {
+    return _LoginScreenState();
+  }
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -86,10 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ElevatedButton(
                         onPressed: () {
                           try {
-                            if (_controllerPassword.text != "" && _controllerUsername.text != "") {
+                            if (_controllerPassword.text != "" &&
+                                _controllerUsername.text != "") {
                               activeUser = userData.firstWhere(
-                                    (user) =>
-                                user.username == _controllerUsername.text &&
+                                (user) =>
+                                    user.username == _controllerUsername.text &&
                                     user.password == _controllerPassword.text,
                               );
                               if (activeUser != null) {
@@ -98,21 +100,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const HomePageScreen(),
+                                    builder: (context) =>
+                                        const HomePageScreen(),
                                   ),
                                 );
                               }
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text("Please fill all the inputs correctly."),
+                                  content: Text(
+                                      "Please fill all the inputs correctly."),
                                 ),
                               );
                             }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text("User not found or credentials are incorrect."),
+                                content: Text(
+                                    "User not found or credentials are incorrect."),
                               ),
                             );
                           }
