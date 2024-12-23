@@ -39,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-      body: Center(
+      body: Align(
+        alignment: Alignment.topCenter,
         child: SizedBox(
           width: screenWidth * 0.8,
           height: screenHeight * 0.6,
@@ -87,8 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ElevatedButton(
                         onPressed: () {
                           try {
-                            if (_controllerPassword.text != "" &&
-                                _controllerUsername.text != "") {
+                            if (_controllerPassword.text != "" && _controllerUsername.text != "") {
                               activeUser = userData.firstWhere(
                                 (user) =>
                                     user.username == _controllerUsername.text &&
@@ -100,24 +100,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const HomePageScreen(),
+                                    builder: (context) => const HomePageScreen(),
                                   ),
                                 );
                               }
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text(
-                                      "Please fill all the inputs correctly."),
+                                  content: Text("Please fill all the inputs correctly."),
                                 ),
                               );
                             }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text(
-                                    "User not found or credentials are incorrect."),
+                                content: Text("User not found or credentials are incorrect."),
                               ),
                             );
                           }

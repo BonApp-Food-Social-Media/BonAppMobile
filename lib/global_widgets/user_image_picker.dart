@@ -54,7 +54,7 @@ class UserImagePickerState extends State<UserImagePicker> {
               child: Container(
                 width: screenWidth * 0.8,
                 height: screenHeight * 0.5,
-                color: Colors.grey[300],
+                color: const Color(0xFFf3f3e0),
                 child: _pickedImageFile != null
                     ? Image.file(
                         _pickedImageFile!,

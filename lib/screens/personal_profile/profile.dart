@@ -133,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
       bottomNavigationBar: widget.isPersonalProfile
           ? const CustomNavigationBar(initialIndexOfScreen: 3)
-          : null,
+          : const CustomNavigationBar(initialIndexOfScreen: 4),
     );
   }
 }

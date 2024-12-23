@@ -3,9 +3,9 @@ import 'package:bon_app_mobile/global_widgets/meal_list_profile_favorite.dart';
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/user_model.dart';
-import '../../singleton/active_user_singleton.dart';
-import '../../singleton/food_list_singleton.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});

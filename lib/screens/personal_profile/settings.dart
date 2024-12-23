@@ -1,8 +1,8 @@
 import 'package:bon_app_mobile/global_widgets/custom_navigation_bar.dart';
 import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 import 'package:flutter/material.dart';
-
-import '../../singleton/active_user_singleton.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -34,6 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.pop(context);
                 ActiveUserSingleton().clearUser();
+                FoodListSingleton().clearFoodList();
               },
               icon: const Icon(
                 Icons.logout,

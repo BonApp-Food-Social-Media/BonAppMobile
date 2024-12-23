@@ -63,45 +63,51 @@ class _MealMainPageState extends State<MealMainPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       User userToShow = userData.where((user) => user.username == widget.foodModel.username).first;
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProfileScreen(user: userToShow, isPersonalProfile: false, showBackButton: true,),
+                          builder: (context) => ProfileScreen(
+                            user: userToShow,
+                            isPersonalProfile: false,
+                            showBackButton: true,
+                          ),
                         ),
                       );
                     },
                     child: Text(
                       widget.foodModel.username,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  activeUser!.followingUsername
-                          .contains(widget.foodModel.username)
+                  activeUser!.followingUsername.contains(widget.foodModel.username)
                       ? OutlinedButton(
                           onPressed: () {
                             setState(() {
-                              activeUser!.followingUsername
-                                  .remove(widget.foodModel.username);
+                              activeUser!.followingUsername.remove(widget.foodModel.username);
                             });
                           },
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                          ),
                           child: const Text(
                             "Subscribed",
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15, color: Color(0xFF123456)),
                           ),
                         )
                       : ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              activeUser!.followingUsername
-                                  .add(widget.foodModel.username);
+                              activeUser!.followingUsername.add(widget.foodModel.username);
                             });
                           },
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: const Color(0xFF123456),
+                    ),
                           child: const Text(
                             "Subscribe",
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15, color: Colors.white),
                           ),
                         )
                 ],

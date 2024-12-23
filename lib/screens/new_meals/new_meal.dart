@@ -27,7 +27,6 @@ class _NewMealScreenState extends State<NewMealScreen> {
   List<Filters> selectedFilters = [];
   List<FoodModel>? meals = FoodListSingleton().foodsList;
 
-
   User? activeUser = ActiveUserSingleton().activeUser;
 
   @override
@@ -74,19 +73,27 @@ class _NewMealScreenState extends State<NewMealScreen> {
                 ),
                 actions: [
                   TextButton(
+                    style: TextButton.styleFrom(backgroundColor: const Color(0xFF123456)),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text("Cancel"),
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   TextButton(
+                    style: TextButton.styleFrom(backgroundColor: const Color(0xFF123456)),
                     onPressed: () {
                       setState(() {
                         selectedFilters = tempSelectedFilters;
                       });
                       Navigator.of(context).pop();
                     },
-                    child: const Text("OK"),
+                    child: const Text(
+                      "OK",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               );
@@ -147,6 +154,7 @@ class _NewMealScreenState extends State<NewMealScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: FilledButton(
+                        style: FilledButton.styleFrom(backgroundColor: const Color(0xFF123456)),
                         onPressed: () {
                           showFilterSelectionDialog();
                         },
@@ -165,8 +173,7 @@ class _NewMealScreenState extends State<NewMealScreen> {
                       controller: _controllerTime,
                       requestFocusOnTap: false,
                       label: const Text('Time'),
-                      dropdownMenuEntries:
-                          Time.values.map<DropdownMenuEntry<Time>>((Time time) {
+                      dropdownMenuEntries: Time.values.map<DropdownMenuEntry<Time>>((Time time) {
                         return DropdownMenuEntry<Time>(
                           value: time,
                           label: time.name,
@@ -199,6 +206,7 @@ class _NewMealScreenState extends State<NewMealScreen> {
                       height: screenHeight * 0.02,
                     ),
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF123456)),
                       onPressed: validMeal
                           ? () {
                               FoodModel newMeal = FoodModel(
@@ -221,7 +229,6 @@ class _NewMealScreenState extends State<NewMealScreen> {
                               Navigator.pop(context);
 
                               //TODO Implement the backend here
-
                             }
                           : null, // Disable button if not valid
                       child: const Text(

@@ -1,6 +1,5 @@
 import 'package:bon_app_mobile/models/food_model.dart';
 
-
 class FoodListSingleton {
   static final FoodListSingleton _foodListSingleton = FoodListSingleton._internal();
 

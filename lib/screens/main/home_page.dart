@@ -30,7 +30,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               child: Text(
                 "Following",
                 style: TextStyle(
-                  color: _isFoodCourt ? Colors.black : Colors.blue,
+                  color: _isFoodCourt ? Colors.black : const Color(0xFF123456),
                   fontSize: 20,
                 ),
               ),
@@ -41,7 +41,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               child: Text(
                 "Food Court",
                 style: TextStyle(
-                  color: _isFoodCourt ? Colors.blue : Colors.black,
+                  color: _isFoodCourt ? const Color(0xFF123456) : Colors.black,
                   fontSize: 20,
                 ),
               ),

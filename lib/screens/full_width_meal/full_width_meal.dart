@@ -3,6 +3,10 @@ import 'dart:io';
 import 'package:bon_app_mobile/models/food_model.dart';
 import 'package:flutter/material.dart';
 
+import 'package:bon_app_mobile/data/user_data.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/screens/personal_profile/profile.dart';
+
 class FullWidthMeal extends StatelessWidget {
   const FullWidthMeal({super.key, required this.meal});
 
@@ -15,10 +19,7 @@ class FullWidthMeal extends StatelessWidget {
     List<String> splitIngredients(String ingredients) {
       final RegExp regExp = RegExp(r'[|,\n/]+');
       List<String> rawSplit = ingredients.split(regExp);
-      return rawSplit
-          .map((item) => item.trim())
-          .where((item) => item.isNotEmpty)
-          .toList();
+      return rawSplit.map((item) => item.trim()).where((item) => item.isNotEmpty).toList();
     }
 
     List<String> splitSteps(String steps) {
@@ -30,7 +31,6 @@ class FullWidthMeal extends StatelessWidget {
           .where((step) => step.isNotEmpty)
           .toList();
     }
-
 
     return Scaffold(
       appBar: AppBar(
@@ -72,13 +72,15 @@ class FullWidthMeal extends StatelessWidget {
                     return Image.asset(
                       "assets/images/no_image_found.png",
                       fit: BoxFit.cover,
-                      width: screenWidth * 0.5,
-                      height: screenHeight * 0.3,
+                      width: screenWidth * 0.7,
+                      height: screenHeight * 0.5,
                     );
                   },
                 ),
               ),
-              SizedBox(height: screenHeight * 0.05,),
+              SizedBox(
+                height: screenHeight * 0.05,
+              ),
               const Text(
                 "Created by:",
                 style: TextStyle(
@@ -86,9 +88,24 @@ class FullWidthMeal extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
-                meal.username,
-                style: const TextStyle(fontSize: 20),
+              GestureDetector(
+                onTap: () {
+                  User userToShow = userData.where((user) => user.username == meal.username).first;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileScreen(
+                        user: userToShow,
+                        isPersonalProfile: false,
+                        showBackButton: true,
+                      ),
+                    ),
+                  );
+                },
+                child: Text(
+                  meal.username,
+                  style: const TextStyle(fontSize: 20),
+                ),
               ),
               SizedBox(
                 height: screenHeight * 0.05,
@@ -110,8 +127,7 @@ class FullWidthMeal extends StatelessWidget {
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               for (var i = 0; i < splitSteps(meal.steps).length; i++)
-                Text("${i + 1}. ${splitSteps(meal.steps)[i].trim()}",
-                    style: const TextStyle(fontSize: 20)),
+                Text("${i + 1}. ${splitSteps(meal.steps)[i].trim()}", style: const TextStyle(fontSize: 20)),
               SizedBox(
                 height: screenHeight * 0.05,
               ),

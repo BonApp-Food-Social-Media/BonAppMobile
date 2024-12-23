@@ -1,9 +1,9 @@
 import 'package:bon_app_mobile/screens/report/report_meal.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/food_model.dart';
-import '../../../models/user_model.dart';
-import '../../../singleton/active_user_singleton.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
 
 class IconRowFoodCourt extends StatefulWidget {
   const IconRowFoodCourt({

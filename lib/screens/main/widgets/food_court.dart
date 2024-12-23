@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import '../../../models/food_model.dart';
-import '../../../models/user_model.dart';
-import '../../../singleton/active_user_singleton.dart';
-import '../../../singleton/food_list_singleton.dart';
+import 'package:bon_app_mobile/models/food_model.dart';
+import 'package:bon_app_mobile/models/user_model.dart';
+import 'package:bon_app_mobile/singleton/active_user_singleton.dart';
+import 'package:bon_app_mobile/singleton/food_list_singleton.dart';
 import 'meal_main.dart';
 
 class FoodCourtScreen extends StatefulWidget {
@@ -56,11 +56,13 @@ class _FoodCourtScreenState extends State<FoodCourtScreen> {
         children: [
           Center(
             child: Container(
+              color: Colors.white,
               padding: const EdgeInsets.all(20),
               child: const Center(
                 child: Text(
-                  "You reached the end 😲. There are strangely no new meal ideas. \nTry again later and don't tell anyone about the easter egg",
-                  style: TextStyle(fontSize: 30),
+                  "You reached the end 😲. There are strangely no new meal ideas. \nPlease try again later...",
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),

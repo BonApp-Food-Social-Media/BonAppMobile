@@ -38,6 +38,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         break;
       case 2:
         isFavorite = true;
+        break;
       case 3:
         isProfile = true;
         break;
@@ -49,39 +50,41 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       _currentIndex = index;
     });
 
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomePageScreen(),
-          ),
-        );
-        break;
-      case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const NewMealScreen(),
-          ),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FavoritesScreen(),
-          ),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProfileScreen(user: activeUser!, isPersonalProfile: true, showBackButton: false,),
-          ),
-        );
-        break;
+    if (index == 1) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const NewMealScreen(),
+        ),
+      );
+    } else {
+      Widget screen;
+
+      switch (index) {
+        case 0:
+          screen = const HomePageScreen();
+          break;
+        case 2:
+          screen = const FavoritesScreen();
+          break;
+        case 3:
+          screen = ProfileScreen(
+            user: activeUser!,
+            isPersonalProfile: true,
+            showBackButton: false,
+          );
+          break;
+        default:
+          return;
+      }
+
+      Navigator.of(context).pushReplacement(
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => screen,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return child;
+          },
+        ),
+      );
     }
   }
 
@@ -90,7 +93,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     return BottomNavigationBar(
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFf3f3e0),
       currentIndex: _currentIndex!,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: const IconThemeData(size: 35),
