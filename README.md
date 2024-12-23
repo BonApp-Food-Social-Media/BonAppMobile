@@ -53,4 +53,4 @@ BonApp Mobile is in active development, and we follow best practices to ensure a
 
 ## License
 
-This project is open-source and available under the [MIT License](https://WeCurrentlyHaveNoLicense).
+This project is open-source and available under the [MIT License](https://raphael-schreiber.com).
