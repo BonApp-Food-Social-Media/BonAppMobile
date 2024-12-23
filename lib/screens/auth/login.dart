@@ -66,9 +66,19 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: "Username",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF123456),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF123456)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF123456)),
+                  ),
                 ),
                 keyboardType: TextInputType.text,
                 autocorrect: false,
+                cursorColor: const Color(0xFF123456),
                 controller: _controllerUsername,
                 enableSuggestions: false,
                 textCapitalization: TextCapitalization.none,
@@ -76,7 +86,17 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: "Password",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF123456),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF123456)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF123456)),
+                  ),
                 ),
+                cursorColor: const Color(0xFF123456),
                 obscureText: true,
                 controller: _controllerPassword,
               ),
@@ -85,7 +105,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          "Signup",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF123456),
+                          ),
+                        ),
+                      ),
                       ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFf3f3e0),
+                        ),
                         onPressed: () {
                           try {
                             if (_controllerPassword.text != "" && _controllerUsername.text != "") {
@@ -123,14 +156,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           "Login",
                           style: TextStyle(
                             fontSize: 20,
+                            color: Color(0xFF123456),
                           ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Signup",
-                          style: TextStyle(fontSize: 20),
                         ),
                       ),
                     ],
@@ -139,7 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {},
                     child: const Text(
                       "Forgot password? Reset password here",
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF123456),
+                      ),
                     ),
                   ),
                 ],
