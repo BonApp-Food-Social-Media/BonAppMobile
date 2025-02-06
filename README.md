@@ -50,7 +50,3 @@ BonApp Mobile is in active development, and we follow best practices to ensure a
 | Raphaël Schreiber | CEO & Lead Dev Mobile                    |
 | Joel Wüthrich     | CIO & Lead Dev Web-Frontend & Database   |
 | Adrian Stöckli    | Backend Developer (Learning Spring Boot) |
-
-## License
-
-This project is open-source and available under the [MIT License](https://raphael-schreiber.com).
